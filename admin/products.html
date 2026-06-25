@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品管理 - 海西储能管理后台</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">海西储能<span>管理后台</span></div>
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-section">
+          <div class="admin-nav-section-title">主菜单</div>
+          <a href="dashboard.html"><span class="nav-icon">📊</span> 仪表盘</a>
+          <a href="products.html" class="active"><span class="nav-icon">📦</span> 产品管理</a>
+          <a href="messages.html"><span class="nav-icon">💬</span> 留言管理 <span class="nav-badge" id="unreadBadge" style="display:none;">0</span></a>
+          <a href="settings.html"><span class="nav-icon">⚙️</span> 网站设置</a>
+        </div>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <a href="../index.html" class="back-to-site"><span>🌐</span> 返回前台网站</a>
+        <a href="#" class="btn-logout"><span>🚪</span> 退出登录</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="menu-toggle-admin"><span></span><span></span><span></span></div>
+          <span class="page-title">产品管理</span>
+        </div>
+        <div class="topbar-right">
+          <div class="admin-user"><div class="admin-avatar">A</div><span>管理员</span></div>
+          <button class="btn-logout">退出</button>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="page-header">
+          <h2>产品列表</h2>
+          <button class="btn btn-primary" id="addProductBtn">+ 添加产品</button>
+        </div>
+
+        <div class="filter-bar">
+          <input type="text" class="search-box" id="productSearch" placeholder="搜索产品名称...">
+          <select id="categoryFilter">
+            <option value="all">全部分类</option>
+            <option value="residential">住宅储能</option>
+            <option value="commercial">商业储能</option>
+            <option value="industrial">工业储能</option>
+            <option value="offgrid">离网系统</option>
+          </select>
+        </div>
+
+        <div class="dashboard-card" style="padding:0;overflow:hidden;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>产品名称</th>
+                <th>分类</th>
+                <th>容量</th>
+                <th>循环寿命</th>
+                <th>标签</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="productsTableBody"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">添加产品</h3>
+        <div class="modal-close" id="modalClose">x</div>
+      </div>
+      <form id="productForm">
+        <div class="modal-body">
+          <input type="hidden" name="productId" id="productId">
+          <div class="form-group">
+            <label>产品名称 <span class="req">*</span></label>
+            <input type="text" name="name" class="form-control" required placeholder="如：一体化储能系统 32kWh">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>分类 <span class="req">*</span></label>
+              <select name="category" class="form-control" required>
+                <option value="residential">住宅储能</option>
+                <option value="commercial">商业储能</option>
+                <option value="industrial">工业储能</option>
+                <option value="offgrid">离网系统</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>图标 (Emoji)</label>
+              <input type="text" name="icon" class="form-control" placeholder="如：🔋 或 🏠" value="🔋">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>标签 (如：热销/新品/推荐，留空则不显示)</label>
+            <input type="text" name="badge" class="form-control" placeholder="如：热销">
+          </div>
+          <div class="form-group">
+            <label>产品描述 <span class="req">*</span></label>
+            <textarea name="description" class="form-control" required placeholder="详细描述产品特点和应用场景..."></textarea>
+          </div>
+          <h4 style="font-size:.95rem;font-weight:700;margin:20px 0 12px;color:var(--admin-dark);">技术参数</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>容量 <span class="req">*</span></label>
+              <input type="text" name="capacity" class="form-control" required placeholder="如：32 kWh">
+            </div>
+            <div class="form-group">
+              <label>电池化学</label>
+              <input type="text" name="chemistry" class="form-control" value="LiFePO4">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>电压</label>
+              <input type="text" name="voltage" class="form-control" placeholder="如：51.2V">
+            </div>
+            <div class="form-group">
+              <label>循环寿命</label>
+              <input type="text" name="cycles" class="form-control" placeholder="如：6000+">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>质保</label>
+            <input type="text" name="warranty" class="form-control" placeholder="如：10年">
+          </div>
+          <div class="form-group">
+            <label>核心特点</label>
+            <div class="tags-input" id="featuresTags">
+              <input type="text" id="featuresInput" placeholder="输入特点后按回车添加...">
+            </div>
+            <div class="form-hint">按回车键添加每个特点</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="modalCancel">取消</button>
+          <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/admin.js"></script>
+  <script>
+    // 搜索和筛选
+    document.addEventListener('DOMContentLoaded', function() {
+      const search = document.getElementById('productSearch');
+      const categoryFilter = document.getElementById('categoryFilter');
+
+      function applyFilter() {
+        let products = DB.getProducts();
+        const q = search.value.trim().toLowerCase();
+        const cat = categoryFilter.value;
+        if (q) products = products.filter(p => p.name.toLowerCase().includes(q));
+        if (cat !== 'all') products = products.filter(p => p.category === cat);
+
+        const tbody = document.getElementById('productsTableBody');
+        if (products.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" class="table-empty">暂无产品</td></tr>';
+          return;
+        }
+        tbody.innerHTML = products.map(p => `
+          <tr>
+            <td>${p.icon || '🔋'} ${p.name}</td>
+            <td><span class="badge badge-info">${categoryText(p.category)}</span></td>
+            <td>${p.specs.capacity}</td>
+            <td>${p.specs.cycles}</td>
+            <td>${p.badge ? `<span class="badge badge-success">${p.badge}</span>` : '<span class="badge badge-gray">无</span>'}</td>
+            <td>
+              <button class="action-btn edit" onclick="editProduct(${p.id})">编辑</button>
+              <button class="action-btn delete" onclick="deleteProduct(${p.id})">删除</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      search.addEventListener('input', applyFilter);
+      categoryFilter.addEventListener('change', applyFilter);
+    });
+  </script>
+</body>
+</html>

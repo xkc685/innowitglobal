@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仪表盘 - 海西储能管理后台</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout" id="dashboard">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">海西储能<span>管理后台</span></div>
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-section">
+          <div class="admin-nav-section-title">主菜单</div>
+          <a href="dashboard.html" class="active"><span class="nav-icon">📊</span> 仪表盘</a>
+          <a href="products.html"><span class="nav-icon">📦</span> 产品管理</a>
+          <a href="messages.html"><span class="nav-icon">💬</span> 留言管理 <span class="nav-badge" id="unreadBadge" style="display:none;">0</span></a>
+          <a href="settings.html"><span class="nav-icon">⚙️</span> 网站设置</a>
+        </div>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <a href="../index.html" class="back-to-site"><span>🌐</span> 返回前台网站</a>
+        <a href="#" class="btn-logout"><span>🚪</span> 退出登录</a>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="menu-toggle-admin"><span></span><span></span><span></span></div>
+          <span class="page-title">仪表盘</span>
+        </div>
+        <div class="topbar-right">
+          <div class="admin-user">
+            <div class="admin-avatar">A</div>
+            <span>管理员</span>
+          </div>
+          <button class="btn-logout">退出</button>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">📦</div>
+            <div class="stat-value" id="statProducts">0</div>
+            <div class="stat-label">产品总数</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">💬</div>
+            <div class="stat-value" id="statMessages">0</div>
+            <div class="stat-label">留言总数</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red">🔔</div>
+            <div class="stat-value" id="statUnread">0</div>
+            <div class="stat-label">未读留言</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">🌍</div>
+            <div class="stat-value" id="statCountries">60+</div>
+            <div class="stat-label">服务国家/地区</div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="dashboard-row">
+          <div class="dashboard-card">
+            <h3>最近留言</h3>
+            <table class="data-table">
+              <thead>
+                <tr><th>姓名</th><th>邮箱</th><th>时间</th><th>状态</th></tr>
+              </thead>
+              <tbody id="recentMessages"></tbody>
+            </table>
+          </div>
+          <div class="dashboard-card">
+            <h3>最近产品</h3>
+            <table class="data-table">
+              <thead>
+                <tr><th>产品名称</th><th>分类</th><th>容量</th><th>创建时间</th></tr>
+              </thead>
+              <tbody id="recentProducts"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;">
+          <a href="products.html" class="btn btn-primary">管理产品</a>
+          <a href="messages.html" class="btn btn-success">查看留言</a>
+          <a href="settings.html" class="btn btn-outline">网站设置</a>
+          <a href="../index.html" class="btn btn-outline">预览前台</a>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

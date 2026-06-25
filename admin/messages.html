@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>留言管理 - 海西储能管理后台</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">海西储能<span>管理后台</span></div>
+      </div>
+      <nav class="admin-nav">
+        <div class="admin-nav-section">
+          <div class="admin-nav-section-title">主菜单</div>
+          <a href="dashboard.html"><span class="nav-icon">📊</span> 仪表盘</a>
+          <a href="products.html"><span class="nav-icon">📦</span> 产品管理</a>
+          <a href="messages.html" class="active"><span class="nav-icon">💬</span> 留言管理 <span class="nav-badge" id="unreadBadge" style="display:none;">0</span></a>
+          <a href="settings.html"><span class="nav-icon">⚙️</span> 网站设置</a>
+        </div>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <a href="../index.html" class="back-to-site"><span>🌐</span> 返回前台网站</a>
+        <a href="#" class="btn-logout"><span>🚪</span> 退出登录</a>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="menu-toggle-admin"><span></span><span></span><span></span></div>
+          <span class="page-title">留言管理</span>
+        </div>
+        <div class="topbar-right">
+          <div class="admin-user"><div class="admin-avatar">A</div><span>管理员</span></div>
+          <button class="btn-logout">退出</button>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <div class="page-header">
+          <h2>客户留言</h2>
+        </div>
+
+        <div class="filter-bar">
+          <select id="messageFilter">
+            <option value="all">全部留言</option>
+            <option value="unread">未读</option>
+            <option value="read">已读</option>
+            <option value="replied">已回复</option>
+          </select>
+        </div>
+
+        <div class="dashboard-card" style="padding:0;overflow:hidden;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>姓名</th>
+                <th>联系方式</th>
+                <th>留言内容</th>
+                <th>时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="messagesTableBody"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Message Detail Modal -->
+  <div class="modal-overlay" id="messageModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>留言详情</h3>
+        <div class="modal-close" id="msgModalClose">x</div>
+      </div>
+      <div class="modal-body" id="messageModalBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="msgModalClose2">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
