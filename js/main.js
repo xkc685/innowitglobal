@@ -233,26 +233,54 @@ function renderProductDetail() {
 
 // ==================== 加载网站设置 ====================
 function loadSiteSettings() {
-  const settings = DB.getSettings();
-  // 更新页脚
-  document.querySelectorAll('[data-setting="phone"]').forEach(el => el.textContent = settings.phone);
-  document.querySelectorAll('[data-setting="email"]').forEach(el => el.textContent = settings.email);
-  document.querySelectorAll('[data-setting="address"]').forEach(el => el.textContent = settings.address);
-  document.querySelectorAll('[data-setting="whatsapp"]').forEach(el => el.textContent = settings.whatsapp);
+  const s = DB.getSettings();
 
-  // 更新统计数据
-  document.querySelectorAll('[data-stat="cycles"]').forEach(el => el.textContent = settings.chargeCycles);
-  document.querySelectorAll('[data-stat="countries"]').forEach(el => el.textContent = settings.countries);
-  document.querySelectorAll('[data-stat="factory"]').forEach(el => el.textContent = settings.factoryArea);
-  document.querySelectorAll('[data-stat="years"]').forEach(el => el.textContent = settings.yearsExperience);
+  // 网站名称（含 Logo 文字）
+  document.querySelectorAll('[data-setting="siteName"]').forEach(el => el.textContent = s.siteName);
 
-  // 更新认证
+  // 英文名称
+  document.querySelectorAll('[data-setting="siteNameEn"]').forEach(el => el.textContent = s.siteNameEn);
+
+  // 标语
+  document.querySelectorAll('[data-setting="slogan"]').forEach(el => el.textContent = s.slogan);
+
+  // 电话（同时修复 href）
+  document.querySelectorAll('[data-setting="phone"]').forEach(el => {
+    el.textContent = s.phone;
+    const a = el.closest('a');
+    if (a && a.href && a.href.startsWith('tel:')) a.href = 'tel:' + s.phone.replace(/\s/g, '');
+  });
+
+  // 邮箱（同时修复 href）
+  document.querySelectorAll('[data-setting="email"]').forEach(el => {
+    el.textContent = s.email;
+    const a = el.closest('a');
+    if (a && a.href && a.href.startsWith('mailto:')) a.href = 'mailto:' + s.email;
+  });
+
+  // 地址
+  document.querySelectorAll('[data-setting="address"]').forEach(el => el.textContent = s.address);
+
+  // WhatsApp / 微信
+  document.querySelectorAll('[data-setting="whatsapp"]').forEach(el => el.textContent = s.whatsapp);
+  document.querySelectorAll('[data-setting="wechat"]').forEach(el => el.textContent = s.wechat);
+
+  // 统计数据
+  document.querySelectorAll('[data-stat="cycles"]').forEach(el => el.textContent = s.chargeCycles);
+  document.querySelectorAll('[data-stat="countries"]').forEach(el => el.textContent = s.countries);
+  document.querySelectorAll('[data-stat="factory"]').forEach(el => el.textContent = s.factoryArea);
+  document.querySelectorAll('[data-stat="years"]').forEach(el => el.textContent = s.yearsExperience);
+
+  // 认证标签
   const certContainer = document.getElementById('certGrid');
-  if (certContainer && settings.certifications) {
-    certContainer.innerHTML = settings.certifications.map(c =>
+  if (certContainer && s.certifications) {
+    certContainer.innerHTML = s.certifications.map(c =>
       `<span class="cert-badge">✓ ${c}</span>`
     ).join('');
   }
+
+  // 页面标题
+  document.title = `${s.siteName} - ${s.slogan}`;
 }
 
 // ==================== 处理联系表单 ====================
