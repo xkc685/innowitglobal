@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Settings - InnoWit Admin</title>
+<link rel="stylesheet" href="../../css/admin.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></head>
+<body>
+<div class="admin-layout">
+<aside class="admin-sidebar">
+<div class="sidebar-brand"><h2>⚡ InnoWit</h2><span>Admin Panel</span></div>
+<nav class="sidebar-nav">
+<a href="dashboard.html"><iconify-icon icon="mdi:view-dashboard"></iconify-icon> Dashboard</a>
+<a href="products.html"><iconify-icon icon="mdi:package-variant"></iconify-icon> Products</a>
+<a href="messages.html"><iconify-icon icon="mdi:email"></iconify-icon> Messages</a>
+<a href="settings.html" class="active"><iconify-icon icon="mdi:cog"></iconify-icon> Settings</a>
+<a href="#" onclick="logout()"><iconify-icon icon="mdi:logout"></iconify-icon> Logout</a>
+</nav></aside>
+<main class="admin-main">
+<header class="admin-header"><h1>Website Settings</h1><div><button class="btn btn-sm btn-outline me-2" onclick="backupData()">Export Backup</button><button class="btn btn-sm btn-outline" onclick="restoreData()">Import Backup</button></div></header>
+<div class="admin-content">
+<div class="settings-grid">
+<div class="setting-group"><h3>Company Info</h3>
+<div class="form-group"><label>Company Name (EN)</label><input class="form-control" id="siteName"></div>
+<div class="form-group"><label>公司名称 (中文)</label><input class="form-control" id="siteNameCN"></div>
+<div class="form-group"><label>Tagline (EN)</label><input class="form-control" id="siteTagline"></div>
+<div class="form-group"><label>标语 (中文)</label><input class="form-control" id="siteTaglineCN"></div>
+</div>
+<div class="setting-group"><h3>Contact Details</h3>
+<div class="form-group"><label>Phone</label><input class="form-control" id="sitePhone"></div>
+<div class="form-group"><label>Email</label><input class="form-control" id="siteEmail"></div>
+<div class="form-group"><label>Address</label><input class="form-control" id="siteAddress"></div>
+<div class="form-group"><label>WhatsApp</label><input class="form-control" id="siteWhatsApp"></div>
+<div class="form-group"><label>WeChat</label><input class="form-control" id="siteWechat"></div>
+</div>
+<div class="setting-group"><h3>Stats & Certifications</h3>
+<div class="form-group"><label>Factory Area</label><input class="form-control" id="siteFactory"></div>
+<div class="form-group"><label>Years Experience</label><input class="form-control" id="siteYears"></div>
+<div class="form-group"><label>Countries</label><input class="form-control" id="siteCountries"></div>
+<div class="form-group"><label>Cycle Life</label><input class="form-control" id="siteCycles"></div>
+<div class="form-group"><label>Certifications (comma separated)</label><textarea class="form-control" id="siteCerts"></textarea></div>
+</div>
+<div class="setting-group"><h3>Security</h3>
+<div class="form-group"><label>Admin Password</label><button class="btn btn-outline w-100" onclick="changePassword()">Change Password</button></div>
+<div class="form-group mt-3"><label>Data Management</label>
+<div class="d-flex gap-2"><button class="btn btn-outline flex-grow-1" onclick="backupData()">Export Backup</button><button class="btn btn-outline flex-grow-1" onclick="restoreData()">Import Backup</button></div>
+</div>
+</div>
+</div>
+<div class="text-end mt-4"><button class="btn btn-primary px-5" onclick="saveSettings()">Save All Settings</button></div>
+</div></main></div>
+<script src="../../js/data.js"></script><script src="../../js/admin.js"></script>
+<script>loadSettings();</script>
+</body></html>
