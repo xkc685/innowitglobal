@@ -191,12 +191,12 @@ function loadBlogList() {
   container.innerHTML = posts.map(post => `
     <div class="col-md-6 col-lg-4">
       <div class="blog-card card h-100">
-        <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${post.title}" onerror="this.src='${pf}images/blog1.jpg'">
+        <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
         <div class="card-body">
-          <span class="badge bg-primary mb-2">${post.category}</span>
+          <span class="badge bg-primary mb-2">${isZH() ? (post.categoryCN || post.category) : post.category}</span>
           <small class="text-muted d-block mb-2">${post.date}</small>
-          <h5 class="card-title">${post.title}</h5>
-          <p class="text-muted">${post.summary}</p>
+          <h5 class="card-title">${isZH() ? (post.titleCN || post.title) : post.title}</h5>
+          <p class="text-muted">${isZH() ? (post.summaryCN || post.summary) : post.summary}</p>
           <a href="post.html?id=${post.id}" class="btn btn-outline-primary btn-sm">${t('Read More', '阅读全文')}</a>
         </div>
       </div>
@@ -235,11 +235,11 @@ function loadFeaturedBlog() {
   container.innerHTML = posts.map(post => `
     <div class="col-md-4">
       <div class="blog-card card h-100">
-        <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${post.title}" onerror="this.src='${pf}images/blog1.jpg'">
+        <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
         <div class="card-body">
           <small class="text-muted">${post.date}</small>
-          <h5>${post.title}</h5>
-          <p class="text-muted small">${post.summary}</p>
+          <h5>${isZH() ? (post.titleCN || post.title) : post.title}</h5>
+          <p class="text-muted small">${isZH() ? (post.summaryCN || post.summary) : post.summary}</p>
           <a href="blog/post.html?id=${post.id}" class="btn btn-sm btn-outline-primary">${t('Read', '阅读')}</a>
         </div>
       </div>
