@@ -214,13 +214,15 @@ function loadBlogPost() {
 
   document.title = post.title + ' - ' + DB.getSite().name;
   const pf = pathPrefix();
+  const content = isZH() ? (post.contentCN || post.summaryCN || post.summary) : (post.content || post.summary);
   container.innerHTML = `
     <article>
       <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${post.title}" class="w-100 rounded-4 mb-4" style="max-height:400px;object-fit:cover" onerror="this.src='${pf}images/blog1.jpg'">
-      <span class="badge bg-primary mb-2">${post.category}</span>
+      <span class="badge bg-primary mb-2">${isZH() ? post.categoryCN : post.category}</span>
       <small class="text-muted d-block mb-3">${post.date}</small>
-      <h1 class="fw-bold mb-4">${post.title}</h1>
-      <div class="fs-5 text-muted lh-lg">${post.summary}</div>
+      <h1 class="fw-bold mb-4">${isZH() ? post.titleCN : post.title}</h1>
+      <div class="fs-5 text-muted lh-lg mb-4">${isZH() ? (post.summaryCN || post.summary) : post.summary}</div>
+      <div class="blog-content">${content}</div>
     </article>`;
 }
 
