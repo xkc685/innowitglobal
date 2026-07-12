@@ -69,7 +69,7 @@ function loadProductsAdmin() {
       <td><strong>${p.name}</strong></td>
       <td>${p.category}</td>
       <td>$${p.price.toLocaleString()}</td>
-      <td>${p.specs.capacity}</td>
+      <td>${p.specs.capacity || p.specs.Energy || p.specs.Power || p.specs.Capacity || '-'}</td>
       <td>${p.featured ? '<span class="badge badge-success">Yes</span>' : '-'}</td>
       <td>
         <button class="btn btn-sm btn-outline" onclick="editProduct(${p.id})">Edit</button>
@@ -81,19 +81,18 @@ function loadProductsAdmin() {
 
 function showProductForm(id) {
   const product = id ? DB.getProduct(id) : {
-    id: null, name: '', nameCN: '', category: 'residential', categoryCN: '住宅储能',
+    id: null, name: '', nameCN: '', category: 'lithium-battery', categoryCN: '锂电池',
     price: 0, priceCN: '', image: '', video: '',
-    specs: { capacity: '', voltage: '', chemistry: 'LiFePO4', cycles: '', warranty: '', weight: '' },
+    specs: {},
     features: [], featuresCN: [],
     description: '', descriptionCN: '', featured: false
   };
 
   const cats = [
-    { v: 'residential', n: 'Residential' },
-    { v: 'commercial', n: 'Commercial' },
-    { v: 'industrial', n: 'Industrial' },
-    { v: 'offgrid', n: 'Off-Grid' },
-    { v: 'components', n: 'Components' }
+    { v: 'lithium-battery', n: 'Lithium Battery' },
+    { v: 'ess', n: 'Energy Storage System' },
+    { v: 'ev-charger', n: 'EV Charger' },
+    { v: 'inverter', n: 'Solar Inverter' }
   ];
 
   const catOpts = cats.map(c => `<option value="${c.v}" ${product.category === c.v ? 'selected' : ''}>${c.n}</option>`).join('');
@@ -175,7 +174,7 @@ function saveProductForm(id) {
     name: document.getElementById('prodName').value,
     nameCN: document.getElementById('prodNameCN').value,
     category: document.getElementById('prodCat').value,
-    categoryCN: { residential: '住宅储能', commercial: '商业储能', industrial: '工业储能', offgrid: '离网系统', components: '电芯组件' }[document.getElementById('prodCat').value],
+    categoryCN: { 'lithium-battery': '锂电池', 'ess': '储能系统', 'ev-charger': 'EV充电桩', 'inverter': '太阳能逆变器' }[document.getElementById('prodCat').value],
     price: parseInt(document.getElementById('prodPrice').value) || 0,
     priceCN: document.getElementById('prodPriceCN').value,
     image: document.getElementById('prodImage').value,
@@ -222,7 +221,7 @@ function filterProducts() {
       <td><strong>${p.name}</strong></td>
       <td>${p.category}</td>
       <td>$${p.price.toLocaleString()}</td>
-      <td>${p.specs.capacity}</td>
+      <td>${p.specs.capacity || p.specs.Energy || p.specs.Power || p.specs.Capacity || '-'}</td>
       <td>${p.featured ? '<span class="badge badge-success">Yes</span>' : '-'}</td>
       <td>
         <button class="btn btn-sm btn-outline" onclick="editProduct(${p.id})">Edit</button>

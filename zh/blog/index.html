@@ -1,33 +1,95 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8">
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>知识中心 - 英诺维特</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css"><link rel="stylesheet" href="../../css/vendor.css"><link rel="stylesheet" href="../../css/sola.css"><link rel="stylesheet" href="../../css/custom.css?v=20260712c">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script></head>
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>博客 - InnoWit</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../../css/style.css?v=20260713a">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
 <body>
-<header id="header" class="fixed-top">
-<div class="top-bar d-none d-lg-block"><div class="container d-flex justify-content-between py-2"><div><iconify-icon icon="mdi:phone"></iconify-icon> <span id="hdrPhone"></span> | <iconify-icon icon="mdi:email"></iconify-icon> <span id="hdrEmail"></span></div><div><a href="../../en/index.html" class="lang-link">EN</a> | <a href="../index.html" class="lang-link active">中文</a></div></div></div>
-<nav class="navbar navbar-expand-lg"><div class="container">
-<a class="navbar-brand" href="../index.html"><img src="../../images/main-logo.png" height="40"> <span id="brandName" class="fw-bold ms-2">英诺维特</span></a>
-<button class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#mobileNav"><iconify-icon icon="mdi:menu" width="28"></iconify-icon></button>
-<div class="collapse navbar-collapse"><ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li><li class="nav-item"><a class="nav-link" href="../about.html">关于我们</a></li>
-<li class="nav-item"><a class="nav-link" href="../products.html">产品中心</a></li>
-<li class="nav-item"><a class="nav-link" href="../solutions.html">解决方案</a></li>
-<li class="nav-item"><a class="nav-link active" href="index.html">知识中心</a></li>
-<li class="nav-item"><a class="nav-link" href="../contact.html">联系我们</a></li>
-</ul><a href="../shop/cart.html" class="btn btn-outline-primary ms-3"><iconify-icon icon="mdi:cart"></iconify-icon> 购物车 <span id="cartCount">0</span></a></div></div></nav>
-</header>
 
-<section class="page-banner"><div class="container"><h1>知识中心</h1><p>行业洞察、技术指南和储能趋势</p><div class="breadcrumb"><a href="../index.html">首页</a> <span>/</span> <span>知识中心</span></div></div></section>
+  <header class="site-header">
+    <div class="top-bar d-none d-lg-block">
+      <div class="container d-flex justify-content-between py-2">
+        <div><iconify-icon icon="mdi:phone" width="14"></iconify-icon> <span id="hdrPhone"></span> &nbsp;|&nbsp; <iconify-icon icon="mdi:email" width="14"></iconify-icon> <span id="hdrEmail"></span></div>
+        <div><a href="../../en/blog/" class="lang-link">EN</a> | <a href="../../zh/blog/" class="lang-link active">中文</a></div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"><img src="../../images/main-logo.png" alt="InnoWit" height="38" onerror="this.style.display='none'"><span class="brand-text" id="brandName">InnoWit</span></a>
+        <button class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#mobileNav"><iconify-icon icon="mdi:menu" width="28" style="color:var(--text-primary)"></iconify-icon></button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link" href="../index.html">首页</a></li>
+            <li class="nav-item"><a class="nav-link" href="../about.html">关于我们</a></li>
+            <li class="nav-item"><a class="nav-link" href="../products.html">产品中心</a></li>
+            <li class="nav-item"><a class="nav-link" href="../solutions.html">解决方案</a></li>
+            <li class="nav-item"><a class="nav-link" href="../projects.html">项目案例</a></li>
+            <li class="nav-item"><a class="nav-link active" href="../blog/">博客</a></li>
+            <li class="nav-item"><a class="nav-link" href="../contact.html">联系我们</a></li>
+            <li class="nav-item ms-3"><a href="../shop/cart.html" class="btn btn-outline-primary btn-sm position-relative"><iconify-icon icon="mdi:cart" width="18"></iconify-icon> <span class="badge bg-danger cart-count" id="cartCount">0</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="offcanvas offcanvas-end d-lg-none" id="mobileNav">
+      <div class="offcanvas-header"><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li><a class="nav-link" href="../index.html">首页</a></li><li><a class="nav-link" href="../about.html">关于我们</a></li><li><a class="nav-link" href="../products.html">产品中心</a></li><li><a class="nav-link" href="../solutions.html">解决方案</a></li><li><a class="nav-link" href="../projects.html">项目案例</a></li><li><a class="nav-link active" href="../blog/">博客</a></li><li><a class="nav-link" href="../contact.html">联系我们</a></li>
+          <li class="mt-3"><a href="../../en/blog/" class="btn btn-outline-primary w-100">English</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
-<section class="py-5"><div class="container"><div class="row g-4" id="blogList"></div></div></section>
+  <section class="page-banner">
+    <div class="container">
+      <nav class="breadcrumb mb-2"><a href="../index.html">首页</a> <span class="sep">/</span> <span style="color:var(--cyan)">博客</span></nav>
+      <h1>博客与<span class="text-gradient">新闻</span></h1>
+      <p>关于储能技术和行业趋势的洞察、指南和最新资讯。</p>
+    </div>
+  </section>
 
-<footer id="footer" class="pt-5 pb-3 bg-dark text-white"><div class="container">
-<div class="row g-4"><div class="col-lg-4"><h4 class="fw-bold" id="footerBrand">英诺维特</h4><p id="footerTagline"></p><p><iconify-icon icon="mdi:map-marker"></iconify-icon> <span id="footerAddr"></span></p><p><iconify-icon icon="mdi:phone"></iconify-icon> <span id="footerPhone"></span></p><p><iconify-icon icon="mdi:email"></iconify-icon> <span id="footerEmail"></span></p></div></div>
-<hr class="mt-4 opacity-25"><div class="text-center opacity-50"><small>&copy; 2026 InnoWit 英诺维特. 版权所有.</small></div></div></footer>
-<script src="../../js/jquery-1.11.0.min.js"></script><script src="../../js/bootstrap.bundle.min.js"></script><script src="../../js/data.js?v=20260712c"></script><script src="../../js/site.js?v=20260712c"></script>
-</body></html>
+  <section class="py-section">
+    <div class="container">
+      <div class="row g-4" id="blogList"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h4 id="footerBrand">InnoWit</h4>
+          <p class="text-secondary mb-3" id="footerTagline">先进储能解决方案</p>
+          <div class="d-flex flex-column gap-2">
+            <span class="text-secondary"><iconify-icon icon="mdi:map-marker" width="16"></iconify-icon> <span id="footerAddr"></span></span>
+            <span class="text-secondary"><iconify-icon icon="mdi:phone" width="16"></iconify-icon> <span id="footerPhone"></span></span>
+            <span class="text-secondary"><iconify-icon icon="mdi:email" width="16"></iconify-icon> <span id="footerEmail"></span></span>
+          </div>
+          <div class="d-flex gap-2 mt-3" id="socialLinks"></div>
+        </div>
+        <div class="col-lg-2 col-md-4"><h5>快速链接</h5><ul><li><a href="../about.html">关于我们</a></li><li><a href="../products.html">产品中心</a></li><li><a href="../solutions.html">解决方案</a></li><li><a href="../projects.html">项目案例</a></li><li><a href="../contact.html">联系我们</a></li></ul></div>
+        <div class="col-lg-3 col-md-4"><h5>产品中心</h5><ul><li><a href="../products.html?cat=lithium-battery">锂电池</a></li><li><a href="../products.html?cat=ess">储能系统</a></li><li><a href="../products.html?cat=ev-charger">EV充电桩</a></li><li><a href="../products.html?cat=inverter">太阳能逆变器</a></li></ul></div>
+        <div class="col-lg-3 col-md-4"><h5>语言</h5><a href="../../en/blog/" class="btn btn-outline-primary btn-sm me-2">English</a><a href="../../zh/blog/" class="btn btn-outline-light btn-sm">中文</a></div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 InnoWit. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../../js/jquery-1.11.0.min.js"></script>
+  <script src="../../js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="../../js/data.js?v=20260713a"></script>
+  <script src="../../js/site.js?v=20260713a"></script>
+</body>
+</html>

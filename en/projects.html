@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Product Detail - InnoWit</title>
+  <title>Projects - InnoWit</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
   <link rel="stylesheet" href="../css/style.css?v=20260713a">
@@ -17,7 +17,7 @@
     <div class="top-bar d-none d-lg-block">
       <div class="container d-flex justify-content-between py-2">
         <div><iconify-icon icon="mdi:phone" width="14"></iconify-icon> <span id="hdrPhone"></span> &nbsp;|&nbsp; <iconify-icon icon="mdi:email" width="14"></iconify-icon> <span id="hdrEmail"></span></div>
-        <div><a href="../en/index.html" class="lang-link active">EN</a> | <a href="../zh/index.html" class="lang-link">中文</a></div>
+        <div><a href="../en/projects.html" class="lang-link active">EN</a> | <a href="../zh/projects.html" class="lang-link">中文</a></div>
       </div>
     </div>
     <nav class="navbar navbar-expand-lg">
@@ -28,9 +28,9 @@
           <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
             <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
-            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+            <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="blog/">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             <li class="nav-item ms-3"><a href="shop/cart.html" class="btn btn-outline-primary btn-sm position-relative"><iconify-icon icon="mdi:cart" width="18"></iconify-icon> <span class="badge bg-danger" id="cartCount">0</span></a></li>
@@ -42,16 +42,32 @@
       <div class="offcanvas-header"><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
       <div class="offcanvas-body">
         <ul class="navbar-nav">
-          <li><a class="nav-link" href="index.html">Home</a></li><li><a class="nav-link" href="about.html">About</a></li><li><a class="nav-link active" href="products.html">Products</a></li><li><a class="nav-link" href="solutions.html">Solutions</a></li><li><a class="nav-link" href="projects.html">Projects</a></li><li><a class="nav-link" href="blog/">Blog</a></li><li><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="mt-3"><a href="../zh/index.html" class="btn btn-outline-primary w-100">中文</a></li>
+          <li><a class="nav-link" href="index.html">Home</a></li><li><a class="nav-link" href="about.html">About</a></li><li><a class="nav-link" href="products.html">Products</a></li><li><a class="nav-link" href="solutions.html">Solutions</a></li><li><a class="nav-link active" href="projects.html">Projects</a></li><li><a class="nav-link" href="blog/">Blog</a></li><li><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="mt-3"><a href="../zh/projects.html" class="btn btn-outline-primary w-100">中文</a></li>
         </ul>
       </div>
     </div>
   </header>
 
-  <section class="py-section" style="padding-top:120px">
+  <section class="page-banner">
     <div class="container">
-      <div id="productDetail"></div>
+      <nav class="breadcrumb mb-2"><a href="index.html">Home</a> <span class="sep">/</span> <span style="color:var(--cyan)">Projects</span></nav>
+      <h1>Global <span class="text-gradient">Projects</span></h1>
+      <p>Real-world energy storage installations across the globe — powering communities with clean energy.</p>
+    </div>
+  </section>
+
+  <section class="py-section">
+    <div class="container">
+      <div class="row g-4" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <section class="cta-section text-center">
+    <div class="container">
+      <h2 class="display-5 fw-bold mb-3">Start Your Project</h2>
+      <p class="lead text-secondary mb-4">Let us help you bring clean energy to your community.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg px-5">Get Started <iconify-icon icon="mdi:arrow-right" width="20"></iconify-icon></a>
     </div>
   </section>
 
@@ -70,7 +86,7 @@
         </div>
         <div class="col-lg-2 col-md-4"><h5>Quick Links</h5><ul><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
         <div class="col-lg-3 col-md-4"><h5>Products</h5><ul><li><a href="products.html?cat=lithium-battery">Lithium Battery</a></li><li><a href="products.html?cat=ess">Energy Storage System</a></li><li><a href="products.html?cat=ev-charger">EV Charger</a></li><li><a href="products.html?cat=inverter">Solar Inverter</a></li></ul></div>
-        <div class="col-lg-3 col-md-4"><h5>Language</h5><a href="../en/index.html" class="btn btn-outline-primary btn-sm me-2">English</a><a href="../zh/index.html" class="btn btn-outline-light btn-sm">中文</a></div>
+        <div class="col-lg-3 col-md-4"><h5>Language</h5><a href="../en/projects.html" class="btn btn-outline-primary btn-sm me-2">English</a><a href="../zh/projects.html" class="btn btn-outline-light btn-sm">中文</a></div>
       </div>
       <div class="footer-bottom">&copy; 2026 InnoWit. All rights reserved.</div>
     </div>

@@ -6,24 +6,23 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>InnoWit - Advanced LiFePO4 Energy Storage Solutions</title>
-  <meta name="description" content="InnoWit is a leading manufacturer of LiFePO4 energy storage batteries for residential, commercial, and industrial applications.">
+  <title>InnoWit - Advanced Energy Storage Solutions</title>
+  <meta name="description" content="InnoWit is a leading manufacturer of LiFePO4 energy storage batteries, ESS, EV chargers, and solar inverters for residential, commercial, and industrial applications.">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-  <link rel="stylesheet" href="../css/vendor.css">
-  <link rel="stylesheet" href="../css/sola.css">
-  <link rel="stylesheet" href="../css/custom.css?v=20260712c">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=20260713a">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 <body>
+
   <!-- Header -->
-  <header id="header" class="fixed-top">
+  <header class="site-header">
     <div class="top-bar d-none d-lg-block">
       <div class="container d-flex justify-content-between py-2">
-        <div><iconify-icon icon="mdi:phone"></iconify-icon> <span id="hdrPhone"></span> &nbsp;|&nbsp; <iconify-icon icon="mdi:email"></iconify-icon> <span id="hdrEmail"></span></div>
+        <div><iconify-icon icon="mdi:phone" width="14"></iconify-icon> <span id="hdrPhone"></span> &nbsp;|&nbsp; <iconify-icon icon="mdi:email" width="14"></iconify-icon> <span id="hdrEmail"></span></div>
         <div>
-          <a href="index.html" class="lang-link active">EN</a> |
+          <a href="../en/index.html" class="lang-link active">EN</a> |
           <a href="../zh/index.html" class="lang-link">中文</a>
         </div>
       </div>
@@ -31,42 +30,40 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="../images/main-logo.png" alt="InnoWit" height="40"> <span id="brandName" class="fw-bold ms-2">InnoWit</span>
+          <img src="../images/main-logo.png" alt="InnoWit" height="38" onerror="this.style.display='none'">
+          <span class="brand-text" id="brandName">InnoWit</span>
         </a>
         <button class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
-          <iconify-icon icon="mdi:menu" width="28"></iconify-icon>
+          <iconify-icon icon="mdi:menu" width="28" style="color:var(--text-primary)"></iconify-icon>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
             <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Solutions</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="solutions.html#residential">Residential</a></li>
-                <li><a class="dropdown-item" href="solutions.html#commercial">Commercial</a></li>
-                <li><a class="dropdown-item" href="solutions.html#industrial">Industrial</a></li>
-              </ul>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="blog/">Knowledge</a></li>
+            <li class="nav-item"><a class="nav-link" href="solutions.html">Solutions</a></li>
+            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="blog/">Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-3">
+              <a href="shop/cart.html" class="btn btn-outline-primary btn-sm position-relative">
+                <iconify-icon icon="mdi:cart" width="18"></iconify-icon> <span class="badge bg-danger cart-count" id="cartCount">0</span>
+              </a>
+            </li>
           </ul>
-          <a href="shop/cart.html" class="btn btn-outline-primary ms-3 position-relative">
-            <iconify-icon icon="mdi:cart"></iconify-icon> Cart <span class="badge bg-primary cart-count" id="cartCount">0</span>
-          </a>
         </div>
       </div>
     </nav>
-    <!-- Mobile Offcanvas -->
     <div class="offcanvas offcanvas-end d-lg-none" id="mobileNav">
       <div class="offcanvas-header"><button class="btn-close" data-bs-dismiss="offcanvas"></button></div>
       <div class="offcanvas-body">
         <ul class="navbar-nav">
-          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link active" href="index.html">Home</a></li>
           <li><a class="nav-link" href="about.html">About</a></li>
           <li><a class="nav-link" href="products.html">Products</a></li>
-          <li><a class="nav-link" href="blog/">Knowledge</a></li>
+          <li><a class="nav-link" href="solutions.html">Solutions</a></li>
+          <li><a class="nav-link" href="projects.html">Projects</a></li>
+          <li><a class="nav-link" href="blog/">Blog</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="mt-3"><a href="../zh/index.html" class="btn btn-outline-primary w-100">中文</a></li>
         </ul>
@@ -74,202 +71,242 @@
     </div>
   </header>
 
-  <!-- Hero Slider -->
-  <section id="slider" class="overflow-hidden position-relative">
-    <div class="swiper slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('../images/slider-image.jpg') center/cover">
-          <div class="container h-100 d-flex align-items-center">
-            <div class="col-lg-7 text-white">
-              <span class="badge bg-warning text-dark mb-3 px-3 py-2">15+ Years of Excellence</span>
-              <h1 class="display-4 fw-bold">Advanced <span class="text-warning">LiFePO4</span> Energy Storage</h1>
-              <p class="lead mb-4">From residential to industrial — we manufacture reliable, safe, and long-lasting battery storage solutions for a sustainable future.</p>
-              <a href="products.html" class="btn btn-warning btn-lg px-4 me-3">Explore Products</a>
-              <a href="contact.html" class="btn btn-outline-light btn-lg px-4">Get a Quote</a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide" style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('../images/slider-image1.jpg') center/cover">
-          <div class="container h-100 d-flex align-items-center">
-            <div class="col-lg-7 text-white">
-              <span class="badge bg-warning text-dark mb-3 px-3 py-2">CE · UL · IEC Certified</span>
-              <h1 class="display-4 fw-bold">Commercial & <span class="text-warning">Industrial</span> Storage Systems</h1>
-              <p class="lead mb-4">From 5kWh to 500kWh, scalable energy storage solutions for businesses ready to cut costs and carbon.</p>
-              <a href="products.html" class="btn btn-warning btn-lg px-4 me-3">View Products</a>
-              <a href="solutions.html#commercial" class="btn btn-outline-light btn-lg px-4">Solutions</a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide" style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url('../images/slider-image2.jpg') center/cover">
-          <div class="container h-100 d-flex align-items-center">
-            <div class="col-lg-7 text-white">
-              <span class="badge bg-warning text-dark mb-3 px-3 py-2">Global Partner Network</span>
-              <h1 class="display-4 fw-bold">Become an <span class="text-warning">InnoWit</span> Distributor</h1>
-              <p class="lead mb-4">Join our global network of distributors and bring world-class energy storage to your market.</p>
-              <a href="contact.html" class="btn btn-warning btn-lg px-4">Partner With Us</a>
-            </div>
-          </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="../images/slider-image.jpg" alt="Energy Storage" onerror="this.style.display='none'">
+    </div>
+    <div class="hero-grid-pattern"></div>
+    <div class="container hero-content">
+      <div class="col-lg-7">
+        <span class="hero-badge"><iconify-icon icon="mdi:lightning-bolt" width="16"></iconify-icon> 15+ Years of Energy Innovation</span>
+        <h1>Advanced <span class="text-gradient">Energy Storage</span> Solutions for a Sustainable Future</h1>
+        <p>From LiFePO4 batteries to grid-scale ESS, EV chargers, and solar inverters — InnoWit delivers turnkey energy storage systems backed by 15+ years of R&D expertise.</p>
+        <div class="d-flex gap-3 flex-wrap mt-4">
+          <a href="products.html" class="btn btn-primary btn-lg px-4">Explore Products <iconify-icon icon="mdi:arrow-right" width="20"></iconify-icon></a>
+          <a href="contact.html" class="btn btn-outline-primary btn-lg px-4">Get a Quote</a>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
   </section>
 
   <!-- Stats -->
-  <section id="stats" class="py-4 bg-dark text-white">
+  <section class="stats-bar">
     <div class="container">
-      <div class="row text-center g-3">
-        <div class="col-6 col-md-3"><div class="display-5 fw-bold" id="statYears">15+</div><small class="text-light opacity-75">Years Experience</small></div>
-        <div class="col-6 col-md-3"><div class="display-5 fw-bold" id="statCountries">30+</div><small class="text-light opacity-75">Countries</small></div>
-        <div class="col-6 col-md-3"><div class="display-5 fw-bold" id="statFactory">50,000m²</div><small class="text-light opacity-75">Factory Area</small></div>
-        <div class="col-6 col-md-3"><div class="display-5 fw-bold" id="statCycles">6000+</div><small class="text-light opacity-75">Cycle Life</small></div>
+      <div class="row g-4">
+        <div class="col-6 col-md-3 stat-item reveal">
+          <div class="stat-num" id="statYears">15+</div>
+          <div class="stat-label">Years in Solar + ESS</div>
+        </div>
+        <div class="col-6 col-md-3 stat-item reveal">
+          <div class="stat-num" id="statCountries">100+</div>
+          <div class="stat-label">Countries Worldwide</div>
+        </div>
+        <div class="col-6 col-md-3 stat-item reveal">
+          <div class="stat-num" id="statPatents">50+</div>
+          <div class="stat-label">Product Patents</div>
+        </div>
+        <div class="col-6 col-md-3 stat-item reveal">
+          <div class="stat-num" id="statFactory">10,000m²</div>
+          <div class="stat-label">Production Facility</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="py-5">
+  <section class="py-section">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <img src="../images/about.png" alt="InnoWit Factory" class="img-fluid rounded-4 shadow">
+        <div class="col-lg-6 reveal">
+          <img src="../images/about.png" alt="InnoWit Factory" class="img-fluid rounded-3" style="border:1px solid var(--border)" onerror="this.src='../images/placeholder.jpg'">
         </div>
-        <div class="col-lg-6">
-          <span class="text-primary fw-semibold">About InnoWit</span>
-          <h2 class="display-5 fw-bold mb-4">Among the Top Energy Storage Manufacturers</h2>
-          <p class="mb-3">InnoWit is a national high-tech enterprise specializing in the R&D, manufacturing, and sales of LiFePO4 energy storage batteries. With over 15 years of industry experience, a 50,000m² automated production facility, and products certified to CE, UL 1973, IEC 62619, and UN38.3 standards, we serve customers in more than 30 countries worldwide.</p>
-          <p>Our product portfolio spans residential wall-mounted batteries, commercial storage cabinets, industrial containerized systems, and off-grid solutions — providing reliable, safe, and efficient energy storage for every scenario.</p>
-          <a href="about.html" class="btn btn-primary px-4 mt-3">Learn More</a>
+        <div class="col-lg-6 reveal">
+          <span class="section-label">About InnoWit</span>
+          <h2 class="display-5 fw-bold mb-4">A Global Leader in <span class="text-gradient">Energy Storage</span> Solutions</h2>
+          <p class="text-secondary mb-3">Since 2010, InnoWit has been at the forefront of energy storage innovation, specializing in LiFePO4 batteries, energy storage systems, EV chargers, and solar inverters. We deliver turnkey systems — from product innovation to hybrid and off-grid installations.</p>
+          <p class="text-secondary mb-4">With a 10,000m² production facility and products certified to CE, UL 1973, IEC 62619, and UN38.3 standards, we serve customers in over 100 countries across residential, commercial, and utility-scale applications.</p>
+          <a href="about.html" class="btn btn-primary px-4">Learn More <iconify-icon icon="mdi:arrow-right" width="18"></iconify-icon></a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Products Categories -->
+  <section class="py-section bg-secondary-dark">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="section-label" style="margin:0 auto">Our Products</span>
+        <h2 class="display-5 fw-bold">Explore Our <span class="text-gradient">Product Range</span></h2>
+      </div>
+      <div class="row g-4" id="categoryCards"></div>
     </div>
   </section>
 
   <!-- Featured Products -->
-  <section id="products" class="py-5 bg-light">
+  <section class="py-section">
     <div class="container">
-      <div class="text-center mb-5">
-        <span class="text-primary fw-semibold">Our Products</span>
-        <h2 class="display-5 fw-bold">Featured Energy Storage Solutions</h2>
+      <div class="d-flex justify-content-between align-items-end mb-5 reveal">
+        <div>
+          <span class="section-label">Featured Products</span>
+          <h2 class="display-5 fw-bold mb-0">Top Energy Storage Solutions</h2>
+        </div>
+        <a href="products.html" class="btn btn-outline-primary d-none d-lg-inline-flex">View All <iconify-icon icon="mdi:arrow-right" width="18"></iconify-icon></a>
       </div>
       <div class="row g-4" id="featuredProducts"></div>
-      <div class="text-center mt-4"><a href="products.html" class="btn btn-outline-primary px-5">View All Products</a></div>
+      <div class="text-center mt-4 d-lg-none"><a href="products.html" class="btn btn-outline-primary">View All Products</a></div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section class="py-section bg-secondary-dark">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <span class="section-label" style="margin:0 auto">Solutions</span>
+        <h2 class="display-5 fw-bold">Complete <span class="text-gradient">Energy Solutions</span></h2>
+      </div>
+      <div class="swiper sol-swiper">
+        <div class="swiper-wrapper" id="homeSolutions"></div>
+        <div class="swiper-pagination sol-pagination mt-4"></div>
+      </div>
     </div>
   </section>
 
   <!-- Advantages -->
-  <section id="advantages" class="py-5">
+  <section class="py-section">
     <div class="container">
-      <div class="text-center mb-5">
-        <span class="text-primary fw-semibold">Why InnoWit</span>
-        <h2 class="display-5 fw-bold">Core Competitive Advantages</h2>
+      <div class="text-center mb-5 reveal">
+        <span class="section-label" style="margin:0 auto">Why InnoWit</span>
+        <h2 class="display-5 fw-bold">Core Competitive <span class="text-gradient">Advantages</span></h2>
       </div>
       <div class="row g-4">
-        <div class="col-md-6 col-lg-3 text-center">
-          <div class="p-4 rounded-4 bg-white shadow-sm h-100">
-            <div class="display-3 mb-3">🏭</div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="advantage-card">
+            <div class="adv-icon"><iconify-icon icon="mdi:factory" width="36" style="color:var(--cyan)"></iconify-icon></div>
             <h5>Automated Manufacturing</h5>
-            <p class="text-muted">50,000m² facility with fully automated production lines ensuring consistent quality at scale.</p>
+            <p>10,000m² facility with fully automated production lines ensuring consistent quality at scale.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 text-center">
-          <div class="p-4 rounded-4 bg-white shadow-sm h-100">
-            <div class="display-3 mb-3">🔬</div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="advantage-card">
+            <div class="adv-icon"><iconify-icon icon="mdi:flask" width="36" style="color:var(--cyan)"></iconify-icon></div>
             <h5>R&D Excellence</h5>
-            <p class="text-muted">In-house R&D team with 20+ patents, continuously innovating in battery management and safety.</p>
+            <p>In-house R&D team with 50+ patents, continuously innovating in battery management and safety.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 text-center">
-          <div class="p-4 rounded-4 bg-white shadow-sm h-100">
-            <div class="display-3 mb-3">✅</div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="advantage-card">
+            <div class="adv-icon"><iconify-icon icon="mdi:certificate" width="36" style="color:var(--cyan)"></iconify-icon></div>
             <h5>Global Certifications</h5>
-            <p class="text-muted">CE, UL 1973, IEC 62619, UN38.3 certified — compliant with international safety standards.</p>
+            <p>CE, UL 1973, IEC 62619, UN38.3 certified — compliant with international safety standards.</p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 text-center">
-          <div class="p-4 rounded-4 bg-white shadow-sm h-100">
-            <div class="display-3 mb-3">🌍</div>
-            <h5>Global Service</h5>
-            <p class="text-muted">Present in 30+ countries with local warehousing and technical support teams.</p>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="advantage-card">
+            <div class="adv-icon"><iconify-icon icon="mdi:earth" width="36" style="color:var(--cyan)"></iconify-icon></div>
+            <h5>Global Service Network</h5>
+            <p>Present in 100+ countries with local warehousing and technical support teams.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="py-section bg-secondary-dark">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-5 reveal">
+        <div>
+          <span class="section-label">Projects</span>
+          <h2 class="display-5 fw-bold mb-0">Global <span class="text-gradient">Case Studies</span></h2>
+        </div>
+        <a href="projects.html" class="btn btn-outline-primary d-none d-lg-inline-flex">All Projects <iconify-icon icon="mdi:arrow-right" width="18"></iconify-icon></a>
+      </div>
+      <div class="swiper proj-swiper">
+        <div class="swiper-wrapper" id="homeProjects"></div>
+        <div class="swiper-pagination proj-pagination mt-4"></div>
       </div>
     </div>
   </section>
 
   <!-- Certifications -->
-  <section id="certs" class="py-5 bg-dark text-white">
+  <section class="py-5">
     <div class="container text-center">
-      <h2 class="fw-bold mb-4">Certifications & Compliance</h2>
+      <h3 class="fw-bold mb-4">Certifications & Compliance</h3>
       <div class="d-flex flex-wrap justify-content-center gap-3" id="certBadges"></div>
     </div>
   </section>
 
-  <!-- Latest Blog -->
-  <section id="blog" class="py-5">
+  <!-- Blog -->
+  <section class="py-section bg-secondary-dark">
     <div class="container">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <div><span class="text-primary fw-semibold">Knowledge Center</span><h2 class="fw-bold">Latest Articles</h2></div>
-        <a href="blog/" class="btn btn-outline-primary">View All</a>
+      <div class="d-flex justify-content-between align-items-end mb-5 reveal">
+        <div>
+          <span class="section-label">Blog & News</span>
+          <h2 class="display-5 fw-bold mb-0">Latest <span class="text-gradient">Articles</span></h2>
+        </div>
+        <a href="blog/" class="btn btn-outline-primary d-none d-lg-inline-flex">View All <iconify-icon icon="mdi:arrow-right" width="18"></iconify-icon></a>
       </div>
       <div class="row g-4" id="latestBlog"></div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-5 bg-primary text-white text-center">
+  <section class="cta-section text-center">
     <div class="container">
-      <h2 class="fw-bold mb-3">Ready to Power Your Future?</h2>
-      <p class="lead mb-4">Contact our team for a free consultation and customized energy storage solution.</p>
-      <a href="contact.html" class="btn btn-warning btn-lg px-5">Contact Us Now</a>
+      <h2 class="display-5 fw-bold mb-3">Ready to Power Your Future?</h2>
+      <p class="lead text-secondary mb-4">Contact our team for a free consultation and customized energy storage solution.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg px-5">Contact Us Now <iconify-icon icon="mdi:arrow-right" width="20"></iconify-icon></a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer id="footer" class="pt-5 pb-3 bg-dark text-white">
+  <footer class="site-footer">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h4 class="fw-bold mb-3" id="footerBrand">InnoWit</h4>
-          <p class="opacity-75" id="footerTagline">Advanced LiFePO4 Energy Storage Solutions</p>
-          <p class="opacity-75"><iconify-icon icon="mdi:map-marker"></iconify-icon> <span id="footerAddr"></span></p>
-          <p class="opacity-75"><iconify-icon icon="mdi:phone"></iconify-icon> <span id="footerPhone"></span></p>
-          <p class="opacity-75"><iconify-icon icon="mdi:email"></iconify-icon> <span id="footerEmail"></span></p>
+          <h4 id="footerBrand">InnoWit</h4>
+          <p class="text-secondary mb-3" id="footerTagline">Advanced Energy Storage Solutions</p>
+          <div class="d-flex flex-column gap-2">
+            <span class="text-secondary"><iconify-icon icon="mdi:map-marker" width="16"></iconify-icon> <span id="footerAddr"></span></span>
+            <span class="text-secondary"><iconify-icon icon="mdi:phone" width="16"></iconify-icon> <span id="footerPhone"></span></span>
+            <span class="text-secondary"><iconify-icon icon="mdi:email" width="16"></iconify-icon> <span id="footerEmail"></span></span>
+          </div>
+          <div class="d-flex gap-2 mt-3" id="socialLinks"></div>
         </div>
         <div class="col-lg-2 col-md-4">
-          <h5 class="mb-3">Quick Links</h5>
-          <ul class="list-unstyled opacity-75">
-            <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About</a></li>
-            <li class="mb-2"><a href="products.html" class="text-white text-decoration-none">Products</a></li>
-            <li class="mb-2"><a href="solutions.html" class="text-white text-decoration-none">Solutions</a></li>
-            <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-4">
-          <h5 class="mb-3">Products</h5>
-          <ul class="list-unstyled opacity-75">
-            <li class="mb-2"><a href="products.html#residential" class="text-white text-decoration-none">Residential Storage</a></li>
-            <li class="mb-2"><a href="products.html#commercial" class="text-white text-decoration-none">Commercial Storage</a></li>
-            <li class="mb-2"><a href="products.html#industrial" class="text-white text-decoration-none">Industrial Storage</a></li>
-            <li class="mb-2"><a href="products.html#offgrid" class="text-white text-decoration-none">Off-Grid Systems</a></li>
+          <h5>Products</h5>
+          <ul>
+            <li><a href="products.html?cat=lithium-battery">Lithium Battery</a></li>
+            <li><a href="products.html?cat=ess">Energy Storage System</a></li>
+            <li><a href="products.html?cat=ev-charger">EV Charger</a></li>
+            <li><a href="products.html?cat=inverter">Solar Inverter</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-4">
-          <h5 class="mb-3">Language</h5>
-          <a href="index.html" class="btn btn-outline-light btn-sm me-2">English</a>
+          <h5>Language</h5>
+          <a href="../en/index.html" class="btn btn-outline-primary btn-sm me-2">English</a>
           <a href="../zh/index.html" class="btn btn-outline-light btn-sm">中文</a>
         </div>
       </div>
-      <hr class="mt-4 opacity-25">
-      <div class="text-center opacity-50"><small>&copy; 2026 InnoWit. All rights reserved.</small></div>
+      <div class="footer-bottom">&copy; 2026 InnoWit. All rights reserved.</div>
     </div>
   </footer>
 
   <script src="../js/jquery-1.11.0.min.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="../js/plugins.js"></script>
-  <script src="../js/data.js?v=20260712c"></script>
-  <script src="../js/site.js?v=20260712c"></script>
+  <script src="../js/data.js?v=20260713a"></script>
+  <script src="../js/site.js?v=20260713a"></script>
 </body>
 </html>
