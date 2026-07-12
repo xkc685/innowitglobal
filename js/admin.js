@@ -125,6 +125,12 @@ function showProductForm(id) {
           <div class="form-group">
             <label>Image URL</label>
             <input class="form-control" id="prodImage" value="${product.image}">
+            <div class="img-upload-area">
+              <input type="file" id="prodImageFile" accept="image/*" style="display:none" onchange="handleImageUpload(this,'prodImage','prodImagePreview')">
+              <button type="button" class="btn btn-sm btn-outline" onclick="document.getElementById('prodImageFile').click()">📤 Upload Image</button>
+              <span style="font-size:.75rem;color:var(--admin-text-light)">or paste image path above</span>
+              <div id="prodImagePreview" class="img-preview-box">${product.image ? `<img src="${product.image.startsWith('data:') ? product.image : escapeAttr(product.image)}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">` : 'No image'}</div>
+            </div>
           </div>
           <div class="form-group">
             <label>Video URL (YouTube)</label>
@@ -167,6 +173,45 @@ function showProductForm(id) {
 }
 
 function closeModal() { document.getElementById('modalContainer').innerHTML = ''; }
+
+// ===== Image Upload (client-side resize → base64) =====
+function handleImageUpload(fileInput, urlFieldId, previewId) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) { alert('Please select an image file.'); return; }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      // Resize: max 800px wide, keep aspect ratio
+      const MAX_W = 800;
+      let w = img.width, h = img.height;
+      if (w > MAX_W) { h = Math.round(h * MAX_W / w); w = MAX_W; }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+
+      // Convert to JPEG at 85% quality (base64)
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+      // Update the URL field and preview
+      document.getElementById(urlFieldId).value = dataUrl;
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = `<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">`;
+
+      // Check size warning
+      const sizeKB = Math.round(dataUrl.length / 1024);
+      if (sizeKB > 300) {
+        preview.insertAdjacentHTML('beforeend', `<div style="font-size:.7rem;color:var(--admin-warning);margin-top:4px">⚠ ${sizeKB}KB — large image may slow localStorage</div>`);
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
 
 function saveProductForm(id) {
   const product = {
@@ -374,6 +419,12 @@ function showPostForm(id) {
           <div class="form-group">
             <label>Image URL</label>
             <input class="form-control" id="postImage" value="${escapeAttr(post.image || '')}" placeholder="images/blog1.jpg">
+            <div class="img-upload-area">
+              <input type="file" id="postImageFile" accept="image/*" style="display:none" onchange="handleImageUpload(this,'postImage','postImagePreview')">
+              <button type="button" class="btn btn-sm btn-outline" onclick="document.getElementById('postImageFile').click()">📤 Upload Image</button>
+              <span style="font-size:.75rem;color:var(--admin-text-light)">or paste path above</span>
+              <div id="postImagePreview" class="img-preview-box">${post.image ? `<img src="${post.image.startsWith('data:') ? post.image : escapeAttr(post.image)}" style="width:100%;height:100%;object-fit:cover;border-radius:6px">` : 'No image'}</div>
+            </div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
