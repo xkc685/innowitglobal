@@ -21,6 +21,13 @@ function pathPrefix() {
   return '';
 }
 
+// Resolve image path: prepend path prefix for relative paths, leave absolute URLs as-is
+function resolveImg(path, fallback) {
+  if (!path) return pathPrefix() + fallback;
+  if (path.startsWith('http') || path.startsWith('//') || path.startsWith('data:') || path.startsWith('/')) return path;
+  return pathPrefix() + path;
+}
+
 // Cart management
 function getCart() {
   try { return JSON.parse(localStorage.getItem('innowit_cart') || '[]'); } catch(e) { return []; }
@@ -104,7 +111,7 @@ function loadFeaturedProducts() {
 
 function renderProductCard(p) {
   const pf = pathPrefix();
-  const img = p.image || pf + 'images/service1.jpg';
+  const img = resolveImg(p.image, 'images/service1.jpg');
   return `
     <div class="col-md-6 col-lg-3">
       <div class="product-card card h-100">
@@ -144,7 +151,7 @@ function loadProductDetail() {
 
   document.title = p.name + ' - ' + DB.getSite().name;
   const pf = pathPrefix();
-  const img = p.image || pf + 'images/service1.jpg';
+  const img = resolveImg(p.image, 'images/service1.jpg');
 
   container.innerHTML = `
     <div class="row g-5">
@@ -191,7 +198,7 @@ function loadBlogList() {
   container.innerHTML = posts.map(post => `
     <div class="col-md-6 col-lg-4">
       <div class="blog-card card h-100">
-        <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
+        <img src="${resolveImg(post.image, 'images/blog1.jpg')}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
         <div class="card-body">
           <span class="badge bg-primary mb-2">${isZH() ? (post.categoryCN || post.category) : post.category}</span>
           <small class="text-muted d-block mb-2">${post.date}</small>
@@ -217,7 +224,7 @@ function loadBlogPost() {
   const content = isZH() ? (post.contentCN || post.summaryCN || post.summary) : (post.content || post.summary);
   container.innerHTML = `
     <article>
-      <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${post.title}" class="w-100 rounded-4 mb-4" style="max-height:400px;object-fit:cover" onerror="this.src='${pf}images/blog1.jpg'">
+      <img src="${resolveImg(post.image, 'images/blog1.jpg')}" alt="${post.title}" class="w-100 rounded-4 mb-4" style="max-height:400px;object-fit:cover" onerror="this.src='${pf}images/blog1.jpg'">
       <span class="badge bg-primary mb-2">${isZH() ? post.categoryCN : post.category}</span>
       <small class="text-muted d-block mb-3">${post.date}</small>
       <h1 class="fw-bold mb-4">${isZH() ? post.titleCN : post.title}</h1>
@@ -235,7 +242,7 @@ function loadFeaturedBlog() {
   container.innerHTML = posts.map(post => `
     <div class="col-md-4">
       <div class="blog-card card h-100">
-        <img src="${post.image || pf + 'images/blog1.jpg'}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
+        <img src="${resolveImg(post.image, 'images/blog1.jpg')}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
         <div class="card-body">
           <small class="text-muted">${post.date}</small>
           <h5>${isZH() ? (post.titleCN || post.title) : post.title}</h5>
@@ -282,7 +289,7 @@ function loadCart() {
     total += p.price * item.qty;
     return `
       <div class="cart-item">
-        <img src="${p.image || pf + 'images/service1.jpg'}" alt="${p.name}" onerror="this.src='${pf}images/service1.jpg'">
+        <img src="${resolveImg(p.image, 'images/service1.jpg')}" alt="${p.name}" onerror="this.src='${pf}images/service1.jpg'">
         <div class="flex-grow-1">
           <h6>${p.name}</h6>
           <small class="text-muted">${p.specs?.capacity || ''}</small>
