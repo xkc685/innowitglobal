@@ -1,11 +1,11 @@
 // ========== InnoWit Energy Storage - Shared Data Layer (v2.0 Dark Tech) ==========
 const DB = {
   _key: 'innowit_db',
-  _version: 22,
+  _version: 23,
 
   defaults() {
     return {
-      _version: 22,
+      _version: 23,
       site: {
         name: 'InnoWit',
         nameCN: '英诺维特',
@@ -33,7 +33,7 @@ const DB = {
       products: [
         // === Lithium Battery ===
         {
-          id: 1, name: 'HuaDa Solar Street Light Battery', nameCN: '华达太阳能路灯电池组',
+          id: 1, name: 'CZ Solar Street Light Battery', nameCN: '创智太阳能路灯电池组',
           category: 'lithium-battery', subcategory: 'LiFePO4 Battery Pack',
           price: 89, priceCN: '¥640',
           image: 'images/placeholder.svg',
@@ -47,12 +47,12 @@ const DB = {
             { title: 'Eco-Friendly', desc: 'Non-toxic LiFePO4 chemistry with no heavy metals.', icon: 'mdi:leaf' }
           ],
           featuresCN: ['长循环寿命', '宽电压范围', '全天候运行', '智能BMS', '轻量化', '环保'],
-          description: 'HuaDa solar street light battery packs use LiFePO4 cells with 2000+ cycles and wide voltage range (6.4V-25.6V). Designed for solar street lights, garden lights, and outdoor lighting systems. Built-in BMS ensures safety and reliability in all weather conditions.',
-          descriptionCN: '华达太阳能路灯电池组采用磷酸铁锂电芯，循环寿命2000次以上，电压范围6.4V-25.6V。适用于太阳能路灯、庭院灯和户外照明系统。内置BMS确保全天候安全可靠运行。',
+          description: 'CZ solar street light battery packs use LiFePO4 cells with 2000+ cycles and wide voltage range (6.4V-25.6V). Designed for solar street lights, garden lights, and outdoor lighting systems. Built-in BMS ensures safety and reliability in all weather conditions.',
+          descriptionCN: '创智太阳能路灯电池组采用磷酸铁锂电芯，循环寿命2000次以上，电压范围6.4V-25.6V。适用于太阳能路灯、庭院灯和户外照明系统。内置BMS确保全天候安全可靠运行。',
           featured: false
         },
         {
-          id: 2, name: 'HuaDa Golf Cart Battery Pack', nameCN: '华达高尔夫球车电池组',
+          id: 2, name: 'CZ Golf Cart Battery Pack', nameCN: '创智高尔夫球车电池组',
           category: 'lithium-battery', subcategory: 'LiFePO4 Battery Pack',
           price: 499, priceCN: '¥3,590',
           image: 'images/placeholder.svg',
@@ -66,13 +66,13 @@ const DB = {
             { title: 'Safe Chemistry', desc: 'LiFePO4 thermal stability prevents fire or explosion risks.', icon: 'mdi:shield-check' }
           ],
           featuresCN: ['直接替换', '4000次循环', '快速充电', '轻量化', '免维护', '安全化学'],
-          description: 'HuaDa golf cart battery packs (12.8V-51.2V) deliver 4000+ cycles and are designed as drop-in replacements for lead-acid batteries. Ideal for golf carts, electric wheelchairs, cleaning machines, and low-speed electric vehicles.',
-          descriptionCN: '华达高尔夫球车电池组（12.8V-51.2V）循环寿命4000次以上，可直接替换铅酸电池。适用于高尔夫球车、电动轮椅、清洁设备和低速电动车。',
+          description: 'CZ golf cart battery packs (12.8V-51.2V) deliver 4000+ cycles and are designed as drop-in replacements for lead-acid batteries. Ideal for golf carts, electric wheelchairs, cleaning machines, and low-speed electric vehicles.',
+          descriptionCN: '创智高尔夫球车电池组（12.8V-51.2V）循环寿命4000次以上，可直接替换铅酸电池。适用于高尔夫球车、电动轮椅、清洁设备和低速电动车。',
           featured: false
         },
         // === Energy Storage System - Portable ===
         {
-          id: 3, name: 'HuaDa Portable Power Station H092 1000W', nameCN: '华达便携式户外电源 H092 1000W',
+          id: 3, name: 'CZ Portable Power Station H092 1000W', nameCN: '创智便携式户外电源 H092 1000W',
           category: 'ess', subcategory: 'Portable Power Station',
           price: 599, priceCN: '¥4,299',
           image: 'images/placeholder.svg',
@@ -86,12 +86,12 @@ const DB = {
             { title: 'Built-in BMS', desc: 'Multi-layer safety protection for worry-free operation.', icon: 'mdi:shield-check' }
           ],
           featuresCN: ['多输出接口', '太阳能充电', '纯正弦波', '便携设计', 'LED显示', '内置BMS'],
-          description: 'HuaDa H092 1000W portable power station delivers 1024Wh of LiFePO4 power for outdoor adventures, camping, RV life, and emergency backup. Multiple output ports and solar charging support keep your devices powered anywhere.',
-          descriptionCN: '华达H092 1000W便携式户外电源提供1024Wh磷酸铁锂电力，适用于户外探险、露营、房车和应急备电。多输出接口和太阳能充电支持，让您的设备随时随地有电。',
+          description: 'CZ H092 1000W portable power station delivers 1024Wh of LiFePO4 power for outdoor adventures, camping, RV life, and emergency backup. Multiple output ports and solar charging support keep your devices powered anywhere.',
+          descriptionCN: '创智H092 1000W便携式户外电源提供1024Wh磷酸铁锂电力，适用于户外探险、露营、房车和应急备电。多输出接口和太阳能充电支持，让您的设备随时随地有电。',
           featured: true
         },
         {
-          id: 4, name: 'HuaDa Portable Power Station H094 2500W', nameCN: '华达便携式户外电源 H094 2500W',
+          id: 4, name: 'CZ Portable Power Station H094 2500W', nameCN: '创智便携式户外电源 H094 2500W',
           category: 'ess', subcategory: 'Portable Power Station',
           price: 1299, priceCN: '¥9,299',
           image: 'images/placeholder.svg',
@@ -105,12 +105,12 @@ const DB = {
             { title: 'Smart Protection', desc: 'Advanced BMS with overcurrent and temperature protection.', icon: 'mdi:shield-check' }
           ],
           featuresCN: ['高功率输出', '大容量', '快速充电', '多设备同时供电', '坚固耐用', '智能保护'],
-          description: 'HuaDa H094 2500W portable power station offers 2496Wh capacity and 2500W continuous output for heavy-duty appliances, worksites, and extended camping. Reliable LiFePO4 battery with comprehensive safety protection.',
-          descriptionCN: '华达H094 2500W便携式户外电源提供2496Wh容量和2500W持续输出，适用于大功率电器、工地和长期露营。磷酸铁锂电池配合全面安全保护。',
+          description: 'CZ H094 2500W portable power station offers 2496Wh capacity and 2500W continuous output for heavy-duty appliances, worksites, and extended camping. Reliable LiFePO4 battery with comprehensive safety protection.',
+          descriptionCN: '创智H094 2500W便携式户外电源提供2496Wh容量和2500W持续输出，适用于大功率电器、工地和长期露营。磷酸铁锂电池配合全面安全保护。',
           featured: true
         },
         {
-          id: 5, name: 'HuaDa Pull-Rod Power Station H095 3kWh', nameCN: '华达多功能推拉式电源 H095 3kWh',
+          id: 5, name: 'CZ Pull-Rod Power Station H095 3kWh', nameCN: '创智多功能推拉式电源 H095 3kWh',
           category: 'ess', subcategory: 'Portable Power Station',
           price: 1999, priceCN: '¥14,299',
           image: 'images/placeholder.svg',
@@ -124,12 +124,12 @@ const DB = {
             { title: 'Smart Display', desc: 'Touchscreen control with real-time energy monitoring.', icon: 'mdi:monitor' }
           ],
           featuresCN: ['拉杆移动', '三合一功能', '高太阳能输入', '电动车充电', '家庭扩展', '智能显示'],
-          description: 'HuaDa H095 3kWh pull-rod power station combines portable power, home backup, and EV emergency charging in one wheeled unit. Pull-rod design makes it easy to move while 3kWh capacity supports multiple scenarios.',
-          descriptionCN: '华达H095 3kWh推拉式电源将便携电源、家庭备电和电动车应急充电集于一体。拉杆设计便于移动，3kWh容量支持多种场景。',
+          description: 'CZ H095 3kWh pull-rod power station combines portable power, home backup, and EV emergency charging in one wheeled unit. Pull-rod design makes it easy to move while 3kWh capacity supports multiple scenarios.',
+          descriptionCN: '创智H095 3kWh推拉式电源将便携电源、家庭备电和电动车应急充电集于一体。拉杆设计便于移动，3kWh容量支持多种场景。',
           featured: false
         },
         {
-          id: 6, name: 'HuaDa Pull-Rod Power Station H095 6kWh', nameCN: '华达多功能推拉式电源 H095 6kWh',
+          id: 6, name: 'CZ Pull-Rod Power Station H095 6kWh', nameCN: '创智多功能推拉式电源 H095 6kWh',
           category: 'ess', subcategory: 'Portable Power Station',
           price: 3499, priceCN: '¥24,999',
           image: 'images/placeholder.svg',
@@ -143,13 +143,13 @@ const DB = {
             { title: 'APP Control', desc: 'Monitor and control via smartphone application.', icon: 'mdi:cellphone' }
           ],
           featuresCN: ['双倍容量', '并联运行', '电动车快充', '高太阳能输入', '全地形轮', 'APP控制'],
-          description: 'HuaDa H095 6kWh pull-rod power station offers 6kWh capacity and 7200W parallel output capability. Ideal for home emergency backup, outdoor events, and EV emergency charging. Parallel units scale to 18kWh.',
-          descriptionCN: '华达H095 6kWh推拉式电源提供6kWh容量和7200W并联输出能力。适用于家庭应急备电、户外活动和电动车应急充电。并联可扩展至18kWh。',
+          description: 'CZ H095 6kWh pull-rod power station offers 6kWh capacity and 7200W parallel output capability. Ideal for home emergency backup, outdoor events, and EV emergency charging. Parallel units scale to 18kWh.',
+          descriptionCN: '创智H095 6kWh推拉式电源提供6kWh容量和7200W并联输出能力。适用于家庭应急备电、户外活动和电动车应急充电。并联可扩展至18kWh。',
           featured: true
         },
         // === Energy Storage System - Residential ===
         {
-          id: 7, name: 'HuaDa Residential ESS H096 5kWh', nameCN: '华达家庭储能系统 H096 5kWh',
+          id: 7, name: 'CZ Residential ESS H096 5kWh', nameCN: '创智家庭储能系统 H096 5kWh',
           category: 'ess', subcategory: 'Residential ESS',
           price: 2499, priceCN: '¥17,999',
           image: 'images/placeholder.svg',
@@ -163,12 +163,12 @@ const DB = {
             { title: 'RS485/CAN', desc: 'Communication interface for inverter integration.', icon: 'mdi:connection' }
           ],
           featuresCN: ['紧凑家用储能', '壁挂/落地', '智能BMS', '长循环寿命', 'LCD显示', 'RS485/CAN'],
-          description: 'HuaDa H096 5kWh residential energy storage system provides 5.12kWh of LiFePO4 capacity for home backup and solar self-consumption. Wall or floor installation with smart BMS and LCD display.',
-          descriptionCN: '华达H096 5kWh家庭储能系统提供5.12kWh磷酸铁锂容量，用于家庭备电和光伏自发自用。支持壁挂或落地安装，配备智能BMS和LCD显示屏。',
+          description: 'CZ H096 5kWh residential energy storage system provides 5.12kWh of LiFePO4 capacity for home backup and solar self-consumption. Wall or floor installation with smart BMS and LCD display.',
+          descriptionCN: '创智H096 5kWh家庭储能系统提供5.12kWh磷酸铁锂容量，用于家庭备电和光伏自发自用。支持壁挂或落地安装，配备智能BMS和LCD显示屏。',
           featured: false
         },
         {
-          id: 8, name: 'HuaDa Residential ESS H096 10kWh', nameCN: '华达家庭储能系统 H096 10kWh',
+          id: 8, name: 'CZ Residential ESS H096 10kWh', nameCN: '创智家庭储能系统 H096 10kWh',
           category: 'ess', subcategory: 'Residential ESS',
           price: 4299, priceCN: '¥30,999',
           image: 'images/placeholder.svg',
@@ -182,12 +182,12 @@ const DB = {
             { title: 'Certified Safe', desc: 'CE, FCC, RoHS certified with multi-layer protection.', icon: 'mdi:shield-check' }
           ],
           featuresCN: ['双倍容量', '模块化设计', '削峰填谷', '应急备电', 'APP监控', '安全认证'],
-          description: 'HuaDa H096 10kWh residential ESS delivers 10.24kWh capacity for larger homes and longer backup. Stackable modular design allows easy expansion as energy needs grow.',
-          descriptionCN: '华达H096 10kWh家庭储能系统提供10.24kWh容量，适用于较大住宅和更长备电时间。模块化堆叠设计便于随能源需求增长而扩展。',
+          description: 'CZ H096 10kWh residential ESS delivers 10.24kWh capacity for larger homes and longer backup. Stackable modular design allows easy expansion as energy needs grow.',
+          descriptionCN: '创智H096 10kWh家庭储能系统提供10.24kWh容量，适用于较大住宅和更长备电时间。模块化堆叠设计便于随能源需求增长而扩展。',
           featured: true
         },
         {
-          id: 9, name: 'HuaDa Residential ESS H096 15kWh', nameCN: '华达家庭储能系统 H096 15kWh',
+          id: 9, name: 'CZ Residential ESS H096 15kWh', nameCN: '创智家庭储能系统 H096 15kWh',
           category: 'ess', subcategory: 'Residential ESS',
           price: 5999, priceCN: '¥43,199',
           image: 'images/placeholder.svg',
@@ -201,12 +201,12 @@ const DB = {
             { title: 'LiFePO4 Chemistry', desc: 'Thermal runaway-free chemistry for home safety.', icon: 'mdi:shield-home' }
           ],
           featuresCN: ['高容量', '可堆叠', 'WiFi/蓝牙', '宽温度范围', '不间断供电', '磷酸铁锂'],
-          description: 'HuaDa H096 15kWh residential ESS provides 14.33kWh capacity for large homes or light commercial applications. Floor-standing stackable design with wireless monitoring and wide temperature operation.',
-          descriptionCN: '华达H096 15kWh家庭储能系统提供14.33kWh容量，适用于大型住宅或轻型商业应用。落地式堆叠设计，支持无线监控和宽温度运行。',
+          description: 'CZ H096 15kWh residential ESS provides 14.33kWh capacity for large homes or light commercial applications. Floor-standing stackable design with wireless monitoring and wide temperature operation.',
+          descriptionCN: '创智H096 15kWh家庭储能系统提供14.33kWh容量，适用于大型住宅或轻型商业应用。落地式堆叠设计，支持无线监控和宽温度运行。',
           featured: false
         },
         {
-          id: 10, name: 'HuaDa Modular ESS H096 5-20kWh', nameCN: '华达模块化家庭储能 H096 5-20kWh',
+          id: 10, name: 'CZ Modular ESS H096 5-20kWh', nameCN: '创智模块化家庭储能 H096 5-20kWh',
           category: 'ess', subcategory: 'Residential ESS',
           price: 5299, priceCN: '¥38,099',
           image: 'images/placeholder.svg',
@@ -220,12 +220,12 @@ const DB = {
             { title: 'Space Efficient', desc: 'Slim tower design fits in garages and utility rooms.', icon: 'mdi:arrow-expand-vertical' }
           ],
           featuresCN: ['可扩展容量', '即插即用', '系统平衡', '家庭集成', '远程升级', '节省空间'],
-          description: 'HuaDa H096 modular ESS offers flexible capacity from 5kWh to 20kWh. Each 5.12kWh module connects easily to scale with your energy needs. Compatible with major hybrid inverters.',
-          descriptionCN: '华达H096模块化储能系统提供5kWh至20kWh灵活容量。每个5.12kWh模块可轻松连接，随能源需求扩展。兼容主流混合逆变器。',
+          description: 'CZ H096 modular ESS offers flexible capacity from 5kWh to 20kWh. Each 5.12kWh module connects easily to scale with your energy needs. Compatible with major hybrid inverters.',
+          descriptionCN: '创智H096模块化储能系统提供5kWh至20kWh灵活容量。每个5.12kWh模块可轻松连接，随能源需求扩展。兼容主流混合逆变器。',
           featured: true
         },
         {
-          id: 11, name: 'HuaDa All-in-One ESS H096 10kWh Pro', nameCN: '华达一体机储能 H096 10kWh Pro',
+          id: 11, name: 'CZ All-in-One ESS H096 10kWh Pro', nameCN: '创智一体机储能 H096 10kWh Pro',
           category: 'ess', subcategory: 'Residential ESS',
           price: 5999, priceCN: '¥43,199',
           image: 'images/placeholder.svg',
@@ -239,13 +239,13 @@ const DB = {
             { title: 'Backup Power', desc: 'UPS-level switchover for critical loads.', icon: 'mdi:backup-restore' }
           ],
           featuresCN: ['一体机', '5kW逆变器', '安装简便', '智能能源', '触摸屏', '备电功能'],
-          description: 'HuaDa H096 10kWh Pro all-in-one ESS combines 10.24kWh battery with 5kW hybrid inverter in a single cabinet. Simplifies installation while providing complete solar + storage + backup functionality.',
-          descriptionCN: '华达H096 10kWh Pro一体机将10.24kWh电池和5kW混合逆变器集成在一个机柜中。简化安装，同时提供完整的光伏+储能+备电功能。',
+          description: 'CZ H096 10kWh Pro all-in-one ESS combines 10.24kWh battery with 5kW hybrid inverter in a single cabinet. Simplifies installation while providing complete solar + storage + backup functionality.',
+          descriptionCN: '创智H096 10kWh Pro一体机将10.24kWh电池和5kW混合逆变器集成在一个机柜中。简化安装，同时提供完整的光伏+储能+备电功能。',
           featured: true
         },
         // === Energy Storage System - Commercial ===
         {
-          id: 12, name: 'HuaDa Commercial ESS H098 50kWh', nameCN: '华达商业储能柜 H098 50kWh',
+          id: 12, name: 'CZ Commercial ESS H098 50kWh', nameCN: '创智商业储能柜 H098 50kWh',
           category: 'ess', subcategory: 'Commercial ESS',
           price: 19999, priceCN: '¥143,999',
           image: 'images/placeholder.svg',
@@ -259,12 +259,12 @@ const DB = {
             { title: 'Certified', desc: 'IEC 62619, EN 61000, RoHS compliant.', icon: 'mdi:certificate' }
           ],
           featuresCN: ['工商业级', '风冷散热', '并网连接', '多重保护', 'BMS+EMS', '认证合规'],
-          description: 'HuaDa H098 50kWh commercial ESS cabinet provides 50.6kWh capacity and 25kW power for C&I peak shaving and demand response. Air-cooled cabinet with integrated BMS and EMS.',
-          descriptionCN: '华达H098 50kWh商业储能柜提供50.6kWh容量和25kW功率，用于工商业削峰填谷和需求响应。风冷机柜，内置BMS和EMS。',
+          description: 'CZ H098 50kWh commercial ESS cabinet provides 50.6kWh capacity and 25kW power for C&I peak shaving and demand response. Air-cooled cabinet with integrated BMS and EMS.',
+          descriptionCN: '创智H098 50kWh商业储能柜提供50.6kWh容量和25kW功率，用于工商业削峰填谷和需求响应。风冷机柜，内置BMS和EMS。',
           featured: false
         },
         {
-          id: 13, name: 'HuaDa Commercial ESS H098 100kWh', nameCN: '华达商业储能柜 H098 100kWh',
+          id: 13, name: 'CZ Commercial ESS H098 100kWh', nameCN: '创智商业储能柜 H098 100kWh',
           category: 'ess', subcategory: 'Commercial ESS',
           price: 34999, priceCN: '¥251,999',
           image: 'images/placeholder.svg',
@@ -278,12 +278,12 @@ const DB = {
             { title: 'Fire Safety', desc: 'Integrated fire suppression and gas detection.', icon: 'mdi:fire-extinguisher' }
           ],
           featuresCN: ['100kWh级别', '50kW功率', '可扩展', '智能EMS', '远程监控', '消防安全'],
-          description: 'HuaDa H098 100kWh commercial ESS cabinet delivers 107.5kWh capacity and 50kW output. Designed for factories, shopping centers, and commercial buildings requiring large-scale energy storage.',
-          descriptionCN: '华达H098 100kWh商业储能柜提供107.5kWh容量和50kW输出。适用于工厂、购物中心和商业建筑的大规模储能需求。',
+          description: 'CZ H098 100kWh commercial ESS cabinet delivers 107.5kWh capacity and 50kW output. Designed for factories, shopping centers, and commercial buildings requiring large-scale energy storage.',
+          descriptionCN: '创智H098 100kWh商业储能柜提供107.5kWh容量和50kW输出。适用于工厂、购物中心和商业建筑的大规模储能需求。',
           featured: true
         },
         {
-          id: 14, name: 'HuaDa Commercial ESS H098 150kWh', nameCN: '华达商业储能柜 H098 150kWh',
+          id: 14, name: 'CZ Commercial ESS H098 150kWh', nameCN: '创智商业储能柜 H098 150kWh',
           category: 'ess', subcategory: 'Commercial ESS',
           price: 49999, priceCN: '¥359,999',
           image: 'images/placeholder.svg',
@@ -297,12 +297,12 @@ const DB = {
             { title: 'All Weather', desc: 'Designed for outdoor installation with climate control.', icon: 'mdi:weather-cloudy' }
           ],
           featuresCN: ['高容量', '100kW输出', '需求响应', '电压支撑', '长寿命', '全天候'],
-          description: 'HuaDa H098 150kWh commercial ESS cabinet offers 158.4kWh capacity and 100kW power output. Ideal for large commercial facilities, microgrids, and industrial peak shaving applications.',
-          descriptionCN: '华达H098 150kWh商业储能柜提供158.4kWh容量和100kW功率输出。适用于大型商业设施、微电网和工业削峰应用。',
+          description: 'CZ H098 150kWh commercial ESS cabinet offers 158.4kWh capacity and 100kW power output. Ideal for large commercial facilities, microgrids, and industrial peak shaving applications.',
+          descriptionCN: '创智H098 150kWh商业储能柜提供158.4kWh容量和100kW功率输出。适用于大型商业设施、微电网和工业削峰应用。',
           featured: false
         },
         {
-          id: 15, name: 'HuaDa Commercial ESS H098 215kWh', nameCN: '华达商业储能柜 H098 215kWh',
+          id: 15, name: 'CZ Commercial ESS H098 215kWh', nameCN: '创智商业储能柜 H098 215kWh',
           category: 'ess', subcategory: 'Commercial ESS',
           price: 69999, priceCN: '¥503,999',
           image: 'images/placeholder.svg',
@@ -316,12 +316,12 @@ const DB = {
             { title: 'Safety Systems', desc: 'Multi-level fire suppression and thermal runaway prevention.', icon: 'mdi:shield' }
           ],
           featuresCN: ['200kWh级别', '电网服务', '高效率', '智能调度', '多通信', '安全系统'],
-          description: 'HuaDa H098 215kWh commercial ESS cabinet provides 215kWh capacity and 100kW output for large-scale commercial and industrial energy storage. Supports grid services and peak demand reduction.',
-          descriptionCN: '华达H098 215kWh商业储能柜提供215kWh容量和100kW输出，用于大规模工商业储能。支持电网服务和削峰需求管理。',
+          description: 'CZ H098 215kWh commercial ESS cabinet provides 215kWh capacity and 100kW output for large-scale commercial and industrial energy storage. Supports grid services and peak demand reduction.',
+          descriptionCN: '创智H098 215kWh商业储能柜提供215kWh容量和100kW输出，用于大规模工商业储能。支持电网服务和削峰需求管理。',
           featured: false
         },
         {
-          id: 16, name: 'HuaDa Commercial ESS H098 315kWh', nameCN: '华达商业储能柜 H098 315kWh',
+          id: 16, name: 'CZ Commercial ESS H098 315kWh', nameCN: '创智商业储能柜 H098 315kWh',
           category: 'ess', subcategory: 'Commercial ESS',
           price: 99999, priceCN: '¥719,999',
           image: 'images/placeholder.svg',
@@ -335,13 +335,13 @@ const DB = {
             { title: 'Revenue Optimization', desc: 'Maximize revenue from energy arbitrage and grid services.', icon: 'mdi:currency-usd' }
           ],
           featuresCN: ['最大工商业容量', '250kW功率', '集装箱就绪', '构网能力', '预测性维护', '收益优化'],
-          description: 'HuaDa H098 315kWh commercial ESS cabinet is the largest cabinet solution with 315.4kWh capacity and 250kW output. Designed for large commercial facilities, industrial parks, and microgrid applications.',
-          descriptionCN: '华达H098 315kWh商业储能柜是最大的柜式解决方案，提供315.4kWh容量和250kW输出。适用于大型商业设施、工业园区和微电网应用。',
+          description: 'CZ H098 315kWh commercial ESS cabinet is the largest cabinet solution with 315.4kWh capacity and 250kW output. Designed for large commercial facilities, industrial parks, and microgrid applications.',
+          descriptionCN: '创智H098 315kWh商业储能柜是最大的柜式解决方案，提供315.4kWh容量和250kW输出。适用于大型商业设施、工业园区和微电网应用。',
           featured: true
         },
         // === Energy Storage System - Industrial Container ===
         {
-          id: 17, name: 'HuaDa Industrial Container ESS H098 500kWh', nameCN: '华达工业集装箱储能 H098 500kWh',
+          id: 17, name: 'CZ Industrial Container ESS H098 500kWh', nameCN: '创智工业集装箱储能 H098 500kWh',
           category: 'ess', subcategory: 'Industrial Container ESS',
           price: 149999, priceCN: '¥1,079,999',
           image: 'images/placeholder.svg',
@@ -355,12 +355,12 @@ const DB = {
             { title: 'Remote Control', desc: 'Centralized monitoring and dispatch via cloud platform.', icon: 'mdi:cloud-cog' }
           ],
           featuresCN: ['集装箱式', '工业空调', '一体化', '即插即用', '电网服务', '远程控制'],
-          description: 'HuaDa H098 500kWh containerized ESS is a complete industrial energy storage solution with 502.6kWh capacity and 110kW power. Includes battery, PCS, BMS, EMS, HVAC, and fire suppression in a single container.',
-          descriptionCN: '华达H098 500kWh集装箱储能系统是完整的工业储能解决方案，提供502.6kWh容量和110kW功率。电池、PCS、BMS、EMS、空调和消防系统集成在一个集装箱内。',
+          description: 'CZ H098 500kWh containerized ESS is a complete industrial energy storage solution with 502.6kWh capacity and 110kW power. Includes battery, PCS, BMS, EMS, HVAC, and fire suppression in a single container.',
+          descriptionCN: '创智H098 500kWh集装箱储能系统是完整的工业储能解决方案，提供502.6kWh容量和110kW功率。电池、PCS、BMS、EMS、空调和消防系统集成在一个集装箱内。',
           featured: false
         },
         {
-          id: 18, name: 'HuaDa Industrial Container ESS H098 1MWh', nameCN: '华达工业集装箱储能 H098 1MWh',
+          id: 18, name: 'CZ Industrial Container ESS H098 1MWh', nameCN: '创智工业集装箱储能 H098 1MWh',
           category: 'ess', subcategory: 'Industrial Container ESS',
           price: 279999, priceCN: '¥2,015,999',
           image: 'images/placeholder.svg',
@@ -374,12 +374,12 @@ const DB = {
             { title: 'Energy Arbitrage', desc: 'Optimize energy costs through time-of-use arbitrage.', icon: 'mdi:chart-line' }
           ],
           featuresCN: ['1MWh容量', '20尺集装箱', '165kW功率', '可扩展', '消防系统', '能源套利'],
-          description: 'HuaDa H098 1MWh containerized ESS packs 1005.3kWh capacity into a standard 20ft container. Designed for utility-scale storage, renewable integration, and grid stabilization projects.',
-          descriptionCN: '华达H098 1MWh集装箱储能在标准20尺集装箱内实现1005.3kWh容量。适用于公用事业级储能、可再生能源整合和电网稳定项目。',
+          description: 'CZ H098 1MWh containerized ESS packs 1005.3kWh capacity into a standard 20ft container. Designed for utility-scale storage, renewable integration, and grid stabilization projects.',
+          descriptionCN: '创智H098 1MWh集装箱储能在标准20尺集装箱内实现1005.3kWh容量。适用于公用事业级储能、可再生能源整合和电网稳定项目。',
           featured: true
         },
         {
-          id: 19, name: 'HuaDa Industrial Container ESS H098 2MWh', nameCN: '华达工业集装箱储能 H098 2MWh',
+          id: 19, name: 'CZ Industrial Container ESS H098 2MWh', nameCN: '创智工业集装箱储能 H098 2MWh',
           category: 'ess', subcategory: 'Industrial Container ESS',
           price: 529999, priceCN: '¥3,815,999',
           image: 'images/placeholder.svg',
@@ -393,12 +393,12 @@ const DB = {
             { title: 'Asset Protection', desc: 'Comprehensive safety and insurance-grade monitoring.', icon: 'mdi:shield-check' }
           ],
           featuresCN: ['2MWh级别', '液冷散热', '电网规模', '长时储能', '黑启动', '资产保护'],
-          description: 'HuaDa H098 2MWh containerized ESS provides 2010.6kWh capacity with liquid cooling for high-density operation. Suitable for grid-scale storage, renewable smoothing, and long-duration energy shifting.',
-          descriptionCN: '华达H098 2MWh集装箱储能提供2010.6kWh容量，采用液冷散热实现高密度运行。适用于电网级储能、可再生能源平滑和长时能源转移。',
+          description: 'CZ H098 2MWh containerized ESS provides 2010.6kWh capacity with liquid cooling for high-density operation. Suitable for grid-scale storage, renewable smoothing, and long-duration energy shifting.',
+          descriptionCN: '创智H098 2MWh集装箱储能提供2010.6kWh容量，采用液冷散热实现高密度运行。适用于电网级储能、可再生能源平滑和长时能源转移。',
           featured: false
         },
         {
-          id: 20, name: 'HuaDa Industrial Container ESS H098 3MWh', nameCN: '华达工业集装箱储能 H098 3MWh',
+          id: 20, name: 'CZ Industrial Container ESS H098 3MWh', nameCN: '创智工业集装箱储能 H098 3MWh',
           category: 'ess', subcategory: 'Industrial Container ESS',
           price: 779999, priceCN: '¥5,615,999',
           image: 'images/placeholder.svg',
@@ -412,13 +412,13 @@ const DB = {
             { title: 'Smart Dispatch', desc: 'AI-optimized dispatch for maximum revenue and value.', icon: 'mdi:brain' }
           ],
           featuresCN: ['3MWh容量', '550kW功率', '40尺集装箱', '电网稳定', '可再生能源调平', '智能调度'],
-          description: 'HuaDa H098 3MWh containerized ESS delivers 3153.9kWh capacity and 550kW power in a 40ft container. The ultimate solution for utility-scale storage, grid stabilization, and renewable energy firming.',
-          descriptionCN: '华达H098 3MWh集装箱储能在40尺集装箱内提供3153.9kWh容量和550kW功率。是公用事业级储能、电网稳定和可再生能源调平的最佳解决方案。',
+          description: 'CZ H098 3MWh containerized ESS delivers 3153.9kWh capacity and 550kW power in a 40ft container. The ultimate solution for utility-scale storage, grid stabilization, and renewable energy firming.',
+          descriptionCN: '创智H098 3MWh集装箱储能在40尺集装箱内提供3153.9kWh容量和550kW功率。是公用事业级储能、电网稳定和可再生能源调平的最佳解决方案。',
           featured: true
         },
         // === EV Charger ===
         {
-          id: 21, name: 'HuaDa Solar-Storage-Charging DC Fast Charger H096 193kWh CS', nameCN: '华达光储充液冷直流快充 H096 193kWh CS',
+          id: 21, name: 'CZ Solar-Storage-Charging DC Fast Charger H096 193kWh CS', nameCN: '创智光储充液冷直流快充 H096 193kWh CS',
           category: 'ev-charger', subcategory: 'DC Fast Charger',
           price: 49999, priceCN: '¥359,999',
           image: 'images/placeholder.svg',
@@ -432,8 +432,8 @@ const DB = {
             { title: 'Liquid Cooling', desc: 'Liquid-cooled power modules for stable high-power output.', icon: 'mdi:snowflake' }
           ],
           featuresCN: ['光储充一体', '120kW直流快充', '离网就绪', '磷酸铁锂电池', '多标准', '液冷散热'],
-          description: 'HuaDa H096 193kWh CS is a solar-storage-charging DC fast charging station with 193kWh LiFePO4 battery and 120kW DC output. Provides off-grid or grid-tied fast charging for EVs with multiple connector standards.',
-          descriptionCN: '华达H096 193kWh CS光储充液冷直流快充站配备193kWh磷酸铁锂电池和120kW直流输出。支持离网或并网模式，为电动汽车提供多标准快充服务。',
+          description: 'CZ H096 193kWh CS is a solar-storage-charging DC fast charging station with 193kWh LiFePO4 battery and 120kW DC output. Provides off-grid or grid-tied fast charging for EVs with multiple connector standards.',
+          descriptionCN: '创智H096 193kWh CS光储充液冷直流快充站配备193kWh磷酸铁锂电池和120kW直流输出。支持离网或并网模式，为电动汽车提供多标准快充服务。',
           featured: true
         }
       ],      solutions: [
