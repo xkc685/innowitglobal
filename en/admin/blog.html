@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Blog Posts - InnoWit Admin</title>
+  <link rel="stylesheet" href="../../css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+<body>
+<div class="admin-layout">
+<aside class="admin-sidebar">
+<div class="sidebar-brand"><h2>⚡ InnoWit</h2><span>Admin Panel</span></div>
+<nav class="sidebar-nav">
+<a href="dashboard.html"><iconify-icon icon="mdi:view-dashboard"></iconify-icon> Dashboard</a>
+<a href="products.html"><iconify-icon icon="mdi:package-variant"></iconify-icon> Products</a>
+<a href="blog.html" class="active"><iconify-icon icon="mdi:post"></iconify-icon> Blog Posts</a>
+<a href="messages.html"><iconify-icon icon="mdi:email"></iconify-icon> Messages</a>
+<a href="settings.html"><iconify-icon icon="mdi:cog"></iconify-icon> Settings</a>
+<a href="#" onclick="backupData()"><iconify-icon icon="mdi:backup-restore"></iconify-icon> Backup</a>
+<a href="#" onclick="logout()"><iconify-icon icon="mdi:logout"></iconify-icon> Logout</a>
+</nav>
+</aside>
+<main class="admin-main">
+<header class="admin-header">
+<h1>Blog Posts</h1>
+<button class="btn btn-primary" onclick="showPostForm()">+ New Post</button>
+</header>
+<div class="admin-content">
+<div class="search-bar">
+<input class="form-control" id="searchPosts" placeholder="Search posts..." oninput="filterPosts()">
+<select class="filter-select" id="filterCat" onchange="filterPosts()">
+<option value="all">All Categories</option>
+<option value="Technology">Technology</option>
+<option value="Guide">Guide</option>
+<option value="Industry">Industry</option>
+<option value="Knowledge">Knowledge</option>
+<option value="News">News</option>
+</select>
+</div>
+<div class="card">
+<div class="card-header"><h2>All Posts</h2><span id="postCount" style="color:var(--admin-text-light);font-size:.85rem"></span></div>
+<div class="card-body">
+<table class="table">
+<thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Actions</th></tr></thead>
+<tbody id="postTableBody"></tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div id="modalContainer"></div>
+<script src="../../js/data.js?v=20260713b"></script>
+<script src="../../js/admin.js?v=20260713b"></script>
+<script>loadBlogAdmin();</script>
+</body>
+</html>

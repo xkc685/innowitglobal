@@ -273,6 +273,173 @@ function delMessage(id) {
   }
 }
 
+// ===== Blog Management =====
+function loadBlogAdmin() {
+  if (!checkAuth()) return;
+  const posts = DB.getBlog();
+  const tbody = document.getElementById('postTableBody');
+  if (!tbody) return;
+
+  if (posts.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" class="empty">No blog posts yet. Click "New Post" to create one.</td></tr>';
+    document.getElementById('postCount').textContent = '0 posts';
+    return;
+  }
+
+  document.getElementById('postCount').textContent = posts.length + ' posts';
+  renderPostTable(posts);
+}
+
+function renderPostTable(posts) {
+  const tbody = document.getElementById('postTableBody');
+  tbody.innerHTML = posts.map(p =>
+    `<tr>
+      <td><strong>${p.title}</strong><br><span style="font-size:.78rem;color:var(--admin-text-light)">${p.titleCN || ''}</span></td>
+      <td><span class="badge badge-success">${p.category}</span></td>
+      <td>${p.date}</td>
+      <td>
+        <button class="btn btn-sm btn-outline" onclick="editPost(${p.id})">Edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deletePost(${p.id})">Del</button>
+      </td>
+    </tr>`
+  ).join('');
+}
+
+function filterPosts() {
+  const q = (document.getElementById('searchPosts')?.value || '').toLowerCase();
+  const cat = document.getElementById('filterCat')?.value || 'all';
+  const posts = DB.getBlog().filter(p => {
+    const matchQ = !q || (p.title || '').toLowerCase().includes(q) || (p.titleCN || '').includes(q);
+    const matchCat = cat === 'all' || p.category === cat;
+    return matchQ && matchCat;
+  });
+  document.getElementById('postCount').textContent = posts.length + ' posts';
+  renderPostTable(posts);
+}
+
+function showPostForm(id) {
+  const post = id ? DB.getBlog().find(p => p.id === id) : {
+    id: null,
+    title: '',
+    titleCN: '',
+    date: new Date().toISOString().slice(0, 10),
+    image: '',
+    category: 'Technology',
+    categoryCN: '技术',
+    summary: '',
+    summaryCN: '',
+    content: '',
+    contentCN: ''
+  };
+
+  if (id && !post) { alert('Post not found!'); return; }
+
+  const cats = [
+    { v: 'Technology', n: 'Technology', cn: '技术' },
+    { v: 'Guide', n: 'Guide', cn: '指南' },
+    { v: 'Industry', n: 'Industry', cn: '行业' },
+    { v: 'Knowledge', n: 'Knowledge', cn: '知识' },
+    { v: 'News', n: 'News', cn: '新闻' }
+  ];
+
+  const catOpts = cats.map(c =>
+    `<option value="${c.v}" data-cn="${c.cn}" ${post.category === c.v ? 'selected' : ''}>${c.n}</option>`
+  ).join('');
+
+  const html = `
+    <div class="modal-overlay" id="postModal" onclick="if(event.target===this)closeModal()">
+      <div class="modal-box" style="width:800px">
+        <h2>${id ? 'Edit Post' : 'New Blog Post'}</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label>Title (EN)</label>
+            <input class="form-control" id="postTitle" value="${escapeAttr(post.title)}">
+          </div>
+          <div class="form-group">
+            <label>标题 (中文)</label>
+            <input class="form-control" id="postTitleCN" value="${escapeAttr(post.titleCN || '')}">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select class="form-control" id="postCat" onchange="document.getElementById('postCatCN').value=this.selectedOptions[0].dataset.cn">${catOpts}</select>
+          </div>
+          <div class="form-group">
+            <label>分类 (中文)</label>
+            <input class="form-control" id="postCatCN" value="${post.categoryCN || ''}">
+          </div>
+          <div class="form-group">
+            <label>Date</label>
+            <input class="form-control" type="date" id="postDate" value="${post.date}">
+          </div>
+          <div class="form-group">
+            <label>Image URL</label>
+            <input class="form-control" id="postImage" value="${escapeAttr(post.image || '')}" placeholder="images/blog1.jpg">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+          <div class="form-group">
+            <label>Summary (EN)</label>
+            <textarea class="form-control" id="postSummary" rows="3">${escapeHtml(post.summary || '')}</textarea>
+          </div>
+          <div class="form-group">
+            <label>摘要 (中文)</label>
+            <textarea class="form-control" id="postSummaryCN" rows="3">${escapeHtml(post.summaryCN || '')}</textarea>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+          <div class="form-group">
+            <label>Content (EN, HTML supported)</label>
+            <textarea class="form-control" id="postContent" rows="10" style="font-family:monospace;font-size:.82rem" placeholder="<h2>Heading</h2><p>Content...</p>">${escapeHtml(post.content || '')}</textarea>
+          </div>
+          <div class="form-group">
+            <label>正文 (中文, 支持HTML)</label>
+            <textarea class="form-control" id="postContentCN" rows="10" style="font-family:monospace;font-size:.82rem" placeholder="<h2>标题</h2><p>正文...</p>">${escapeHtml(post.contentCN || '')}</textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="savePostForm(${id || 'null'})">Save Post</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById('modalContainer').innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function escapeAttr(s) {
+  return (s || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;');
+}
+
+function savePostForm(id) {
+  const post = {
+    id: id || null,
+    title: document.getElementById('postTitle').value,
+    titleCN: document.getElementById('postTitleCN').value,
+    category: document.getElementById('postCat').value,
+    categoryCN: document.getElementById('postCatCN').value,
+    date: document.getElementById('postDate').value,
+    image: document.getElementById('postImage').value,
+    summary: document.getElementById('postSummary').value,
+    summaryCN: document.getElementById('postSummaryCN').value,
+    content: document.getElementById('postContent').value,
+    contentCN: document.getElementById('postContentCN').value
+  };
+  DB.savePost(post);
+  closeModal();
+  loadBlogAdmin();
+}
+
+function editPost(id) { showPostForm(id); }
+
+function deletePost(id) {
+  if (confirm('Delete this blog post?')) {
+    DB.deletePost(id);
+    loadBlogAdmin();
+  }
+}
+
 // ===== Settings =====
 function loadSettings() {
   if (!checkAuth()) return;
