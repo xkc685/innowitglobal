@@ -1,11 +1,11 @@
 // ========== InnoWit Energy Storage - Shared Data Layer ==========
 const DB = {
   _key: 'innowit_db',
-  _version: 7,
+  _version: 8,
 
   defaults() {
     return {
-      _version: 7,
+      _version: 8,
       site: {
         name: 'InnoWit',
         nameCN: '英诺维特',
