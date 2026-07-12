@@ -10,12 +10,20 @@ function t(en, zh) {
   return isZH() ? zh : en;
 }
 
-// Get correct relative path prefix based on page depth
+// Get correct relative path prefix for resources (CSS/JS/images at root level)
 function pathPrefix() {
   const path = window.location.pathname;
   if (/(\/en\/|\/zh\/)(blog|shop|admin)\//.test(path)) return '../../';
   if (/(\/en\/|\/zh\/)/.test(path)) return '../';
   return '';
+}
+
+// Generate same-language relative link (stays in /en/ or /zh/ directory)
+// Use this for navigation between pages in the same language
+function langLink(page) {
+  const path = window.location.pathname;
+  if (/(\/en\/|\/zh\/)(blog|shop|admin)\//.test(path)) return '../' + page;
+  return page;
 }
 
 // Resolve image path
@@ -144,12 +152,11 @@ function loadCategoryCards() {
   const container = document.getElementById('categoryCards');
   if (!container) return;
   const cats = DB.getCategories();
-  const pf = pathPrefix();
   container.innerHTML = cats.map(cat => {
     const count = DB.getProductsByCategory(cat.id).length;
     return `
     <div class="col-md-6 col-lg-3 reveal">
-      <a href="${pf}${isZH() ? '../zh/' : ''}products.html?cat=${cat.id}" class="text-decoration-none">
+      <a href="${langLink('products.html?cat=' + cat.id)}" class="text-decoration-none">
         <div class="category-card h-100">
           <div class="cat-icon"><iconify-icon icon="${cat.icon}" width="32" style="color:var(--cyan)"></iconify-icon></div>
           <h4>${isZH() ? cat.nameCN : cat.name}</h4>
@@ -172,7 +179,7 @@ function renderProductCard(p) {
   const cats = DB.getCategories();
   const cat = cats.find(c => c.id === p.category);
   const catName = cat ? (isZH() ? cat.nameCN : cat.name) : p.category;
-  const detailLink = pf + (isZH() ? '../zh/' : '') + 'product-detail.html?id=' + p.id;
+  const detailLink = langLink('product-detail.html?id=' + p.id);
   return `
     <div class="col-md-6 col-lg-4 reveal">
       <div class="product-card">
@@ -182,7 +189,7 @@ function renderProductCard(p) {
         <div class="product-body">
           <span class="product-cat">${catName}</span>
           <h5><a href="${detailLink}" class="text-decoration-none" style="color:inherit">${isZH() ? p.nameCN : p.name}</a></h5>
-          <p class="product-spec">${p.specs?.Energy || p.specs?.Capacity || p.specs?.Power || ''} ${p.subcategory ? '· ' + p.subcategory : ''}</p>
+          <p class="product-spec">${p.specs?.Energy || p.specs?.Capacity || p.specs?.Power || p.specs?.['Battery Capacity'] || ''} ${p.subcategory ? '· ' + p.subcategory : ''}</p>
           <div class="product-price">${fmtPrice(p.price, p.priceCN)}</div>
           <div class="product-footer">
             <a href="${detailLink}" class="btn btn-outline-primary btn-sm flex-grow-1">${t('View Details', '查看详情')}</a>
@@ -217,10 +224,9 @@ function loadAllProducts() {
   const tabsContainer = document.getElementById('filterTabs');
   if (tabsContainer) {
     const cats = DB.getCategories();
-    const pf = pathPrefix();
     tabsContainer.innerHTML = `
-      <button class="filter-tab ${filter === 'all' ? 'active' : ''}" onclick="location.href='${pf}${isZH()?'../zh/':''}products.html'">${t('All Products', '全部产品')}</button>
-      ${cats.map(c => `<button class="filter-tab ${filter === c.id ? 'active' : ''}" onclick="location.href='${pf}${isZH()?'../zh/':''}products.html?cat=${c.id}'">${isZH() ? c.nameCN : c.name}</button>`).join('')}
+      <button class="filter-tab ${filter === 'all' ? 'active' : ''}" onclick="location.href='${langLink('products.html')}'">${t('All Products', '全部产品')}</button>
+      ${cats.map(c => `<button class="filter-tab ${filter === c.id ? 'active' : ''}" onclick="location.href='${langLink('products.html?cat=' + c.id)}'">${isZH() ? c.nameCN : c.name}</button>`).join('')}
     `;
   }
 
@@ -263,9 +269,9 @@ function loadProductDetail() {
       </div>
       <div class="col-lg-6">
         <nav class="breadcrumb mb-3">
-          <a href="${pf}${isZH()?'../zh/':''}index.html">${t('Home', '首页')}</a>
+          <a href="${langLink('index.html')}">${t('Home', '首页')}</a>
           <span class="sep">/</span>
-          <a href="${pf}${isZH()?'../zh/':''}products.html">${t('Products', '产品')}</a>
+          <a href="${langLink('products.html')}">${t('Products', '产品')}</a>
           <span class="sep">/</span>
           <span style="color:var(--cyan)">${isZH() ? p.nameCN : p.name}</span>
         </nav>
@@ -279,7 +285,7 @@ function loadProductDetail() {
           <button class="btn btn-primary px-4" onclick="addToCart(${p.id},parseInt(document.getElementById('productQty').value))">
             <iconify-icon icon="mdi:cart-plus" width="20"></iconify-icon> ${t('Add to Cart', '加入购物车')}
           </button>
-          <a href="${pf}${isZH()?'../zh/':''}contact.html" class="btn btn-outline-primary px-4">
+          <a href="${langLink('contact.html')}" class="btn btn-outline-primary px-4">
             <iconify-icon icon="mdi:email" width="20"></iconify-icon> ${t('Inquiry', '询价')}
           </a>
         </div>
@@ -300,7 +306,7 @@ function loadProductDetail() {
             <div class="feat-icon"><iconify-icon icon="${f.icon || 'mdi:star'}" width="22"></iconify-icon></div>
             <div>
               <h6>${isZH() ? (featureTexts[i] || f.title) : f.title}</h6>
-              <p>${f.desc}</p>
+              <p>${isZH() ? (f.descCN || f.desc) : f.desc}</p>
             </div>
           </div>
         `).join('')}
@@ -338,7 +344,7 @@ function loadSolutions() {
             <h4 class="mb-0">${isZH() ? sol.nameCN : sol.name}</h4>
           </div>
           <p>${isZH() ? sol.descCN : sol.desc}</p>
-          <a href="${pf}${isZH()?'../zh/':''}contact.html" class="cat-link">${t('Learn More', '了解更多')} <iconify-icon icon="mdi:arrow-right" width="16"></iconify-icon></a>
+          <a href="${langLink('contact.html')}" class="cat-link">${t('Learn More', '了解更多')} <iconify-icon icon="mdi:arrow-right" width="16"></iconify-icon></a>
         </div>
       </div>
     </div>`).join('');
@@ -467,7 +473,7 @@ function loadBlogPost() {
       <div class="fs-5 text-secondary mb-4">${isZH() ? (post.summaryCN || post.summary) : post.summary}</div>
       <div class="blog-content">${content}</div>
       <div class="mt-5 pt-4 border-top" style="border-color:var(--border)!important">
-        <a href="${pf}${isZH()?'../../zh/':'../../en/'}blog/" class="btn btn-outline-primary"><iconify-icon icon="mdi:arrow-left"></iconify-icon> ${t('Back to Blog', '返回博客')}</a>
+        <a href="${langLink('blog/')}" class="btn btn-outline-primary"><iconify-icon icon="mdi:arrow-left"></iconify-icon> ${t('Back to Blog', '返回博客')}</a>
       </div>
     </article>`;
 }
@@ -480,12 +486,12 @@ function loadFeaturedBlog() {
   container.innerHTML = posts.map(post => `
     <div class="col-md-4 reveal">
       <div class="blog-card">
-        <a href="${pf}${isZH()?'../zh/':'../en/'}blog/post.html?id=${post.id}">
+        <a href="${langLink('blog/post.html?id=' + post.id)}">
           <img src="${resolveImg(post.image, 'images/blog1.jpg')}" alt="${isZH() ? (post.titleCN || post.title) : post.title}" onerror="this.src='${pf}images/blog1.jpg'">
         </a>
         <div class="blog-body">
           <small class="blog-date">${post.date}</small>
-          <h5><a href="${pf}${isZH()?'../zh/':'../en/'}blog/post.html?id=${post.id}" class="text-decoration-none" style="color:inherit">${isZH() ? (post.titleCN || post.title) : post.title}</a></h5>
+          <h5><a href="${langLink('blog/post.html?id=' + post.id)}" class="text-decoration-none" style="color:inherit">${isZH() ? (post.titleCN || post.title) : post.title}</a></h5>
           <p>${isZH() ? (post.summaryCN || post.summary) : post.summary}</p>
         </div>
       </div>
@@ -517,7 +523,7 @@ function loadCart() {
   const pf = pathPrefix();
 
   if (cart.length === 0) {
-    container.innerHTML = '<div class="text-center py-5"><iconify-icon icon="mdi:cart-off" width="64" style="color:var(--text-muted)"></iconify-icon><h4 class="mt-3 text-muted">' + t('Your cart is empty', '您的购物车是空的') + '</h4><a href="' + pf + (isZH()?'../zh/':'../en/') + 'products.html" class="btn btn-primary mt-3">' + t('Browse Products', '浏览产品') + '</a></div>';
+    container.innerHTML = '<div class="text-center py-5"><iconify-icon icon="mdi:cart-off" width="64" style="color:var(--text-muted)"></iconify-icon><h4 class="mt-3 text-muted">' + t('Your cart is empty', '您的购物车是空的') + '</h4><a href="' + langLink('products.html') + '" class="btn btn-primary mt-3">' + t('Browse Products', '浏览产品') + '</a></div>';
     const totalEl = document.getElementById('cartTotal');
     if (totalEl) totalEl.textContent = '$0';
     return;

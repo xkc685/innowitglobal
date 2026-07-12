@@ -1,11 +1,11 @@
 // ========== InnoWit Energy Storage - Shared Data Layer (v2.0 Dark Tech) ==========
 const DB = {
   _key: 'innowit_db',
-  _version: 21,
+  _version: 22,
 
   defaults() {
     return {
-      _version: 21,
+      _version: 22,
       site: {
         name: 'InnoWit',
         nameCN: '英诺维特',
