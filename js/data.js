@@ -1,9 +1,11 @@
 // ========== InnoWit Energy Storage - Shared Data Layer ==========
 const DB = {
   _key: 'innowit_db',
+  _version: 7,
 
   defaults() {
     return {
+      _version: 7,
       site: {
         name: 'InnoWit',
         nameCN: '英诺维特',
@@ -26,7 +28,7 @@ const DB = {
           id: 1, name: 'InnoStack 5000', nameCN: '英诺堆叠 5000',
           category: 'residential', categoryCN: '住宅储能',
           price: 2499, priceCN: '¥17,999',
-          image: 'images/products/innostack5000.jpg',
+          image: 'images/products/innostack5000.jpg?v=2',
           video: '',
           specs: { capacity: '5.12 kWh', voltage: '51.2V', chemistry: 'LiFePO4', cycles: '6000+', warranty: '10 Years', weight: '48 kg' },
           features: ['Modular stackable design', 'Smart BMS protection', 'WiFi monitoring', 'IP65 waterproof', 'Zero maintenance'],
@@ -39,7 +41,7 @@ const DB = {
           id: 2, name: 'InnoWall 10K', nameCN: '英诺壁挂 10K',
           category: 'residential', categoryCN: '住宅储能',
           price: 4299, priceCN: '¥30,999',
-          image: 'images/products/innowall10k.jpg',
+          image: 'images/products/innowall10k.jpg?v=2',
           video: '',
           specs: { capacity: '10.24 kWh', voltage: '51.2V', chemistry: 'LiFePO4', cycles: '8000+', warranty: '12 Years', weight: '85 kg' },
           features: ['Ultra-slim wall-mount', 'Hybrid inverter ready', 'Peak shaving', 'Emergency backup', 'App control'],
@@ -52,7 +54,7 @@ const DB = {
           id: 3, name: 'InnoCube C100', nameCN: '英诺立方 C100',
           category: 'commercial', categoryCN: '商业储能',
           price: 12999, priceCN: '¥93,999',
-          image: 'images/products/innocubec100.jpg',
+          image: 'images/products/innocubec100.jpg?v=2',
           video: '',
           specs: { capacity: '100 kWh', voltage: '768V', chemistry: 'LiFePO4', cycles: '8000+', warranty: '15 Years', weight: '920 kg' },
           features: ['Liquid cooling', 'Grid-forming capable', 'Fire suppression system', 'Remote diagnostics', 'Peak shaving automation'],
@@ -65,7 +67,7 @@ const DB = {
           id: 4, name: 'InnoContainer M500', nameCN: '英诺集装箱 M500',
           category: 'industrial', categoryCN: '工业储能',
           price: 49999, priceCN: '¥359,999',
-          image: 'images/products/innocontainer.jpg',
+          image: 'images/products/innocontainer.jpg?v=2',
           video: '',
           specs: { capacity: '500 kWh', voltage: '768V', chemistry: 'LiFePO4', cycles: '10000+', warranty: '20 Years', weight: '4200 kg' },
           features: ['Containerized design', 'HVAC climate control', 'Grid services (VPP)', 'SCADA integration', '24/7 remote monitoring'],
@@ -78,7 +80,7 @@ const DB = {
           id: 5, name: 'InnoPower Rack 48V', nameCN: '英诺动力机架 48V',
           category: 'offgrid', categoryCN: '离网系统',
           price: 1899, priceCN: '¥13,699',
-          image: 'images/products/innopowerrack.jpg',
+          image: 'images/products/innopowerrack.jpg?v=2',
           video: '',
           specs: { capacity: '4.8 kWh', voltage: '48V', chemistry: 'LiFePO4', cycles: '5000+', warranty: '7 Years', weight: '42 kg' },
           features: ['19-inch rack mount', 'Parallel up to 16 units', 'Solar charge ready', 'Deep discharge protection', 'Plug & play'],
@@ -91,7 +93,7 @@ const DB = {
           id: 6, name: 'InnoCell Pro', nameCN: '英诺电芯 Pro',
           category: 'components', categoryCN: '电芯组件',
           price: 199, priceCN: '¥1,429',
-          image: 'images/products/innocellpro.jpg',
+          image: 'images/products/innocellpro.jpg?v=2',
           video: '',
           specs: { capacity: '3.2V 280Ah', voltage: '3.2V', chemistry: 'LiFePO4', cycles: '6000+', warranty: '5 Years', weight: '5.4 kg' },
           features: ['Grade A cells', 'Laser-welded terminals', 'Individual QR traceability', 'Low IR matched', 'UN38.3 certified'],
@@ -152,7 +154,13 @@ const DB = {
   get() {
     try {
       const raw = localStorage.getItem(this._key);
-      return raw ? JSON.parse(raw) : this.defaults();
+      if (!raw) return this.defaults();
+      const data = JSON.parse(raw);
+      if (!data._version || data._version < this._version) {
+        this.set(this.defaults());
+        return this.defaults();
+      }
+      return data;
     } catch (e) { return this.defaults(); }
   },
 
